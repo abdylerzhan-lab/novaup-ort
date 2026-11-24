@@ -2,87 +2,111 @@
 <html lang="ky">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Бекер сынамык ЖРТ — NOVA Up</title>
-<meta name="description" content="Бекер онлайн сынамык ЖРТ (ОРТ): математика, аналогиялар, сүйлөмдөрдү толуктоо. Жыйынтыкты дароо көрөсүз.">
+<meta name="description" content="Бекер онлайн сынамык ЖРТ (ОРТ) чыныгы форматта: математика, аналогиялар, окуу жана түшүнүү, практикалык грамматика. Болжолдуу балл жана толук анализ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bordo:#4A0E22;--bordo2:#6E1A36;--dark:#1E0A12;--gold:#F5C451;--gold2:#B8892A;--cream:#FBF3E4;--pink:#D9A7B4;--ok:#2E7D32;--bad:#C62828}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100%}
+:root{--bordo:#4A0E22;--bordo2:#6E1A36;--dark:#1E0A12;--gold:#F5C451;--gold2:#B8892A;--cream:#FBF3E4;--pink:#D9A7B4;--ok:#2E7D32;--bad:#C62828;--line:#e3cfd6;--mut:#8a6a74}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
 body{font-family:Montserrat,system-ui,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased}
 .bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(120% 80% at 80% -10%,rgba(245,196,81,.22),transparent 55%),linear-gradient(160deg,var(--bordo2),var(--bordo) 45%,var(--dark))}
-.wrap{max-width:640px;margin:0 auto;padding:18px 18px 40px}
+.wrap{max-width:680px;margin:0 auto;padding:18px 16px 40px}
 header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
 header img{height:34px}
 .lang{display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
 .lang button{border:0;background:transparent;color:#fff;font:600 13px Montserrat;padding:6px 12px;border-radius:999px;cursor:pointer}
 .lang button.on{background:var(--gold);color:var(--dark)}
-.card{background:var(--cream);color:var(--dark);border-radius:20px;padding:22px 20px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.card{background:var(--cream);color:var(--dark);border-radius:20px;padding:22px 18px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.card+.card{margin-top:14px}
 .hero h1{font-size:30px;line-height:1.15;font-weight:800;margin:6px 0 12px}
 .hero h1 span{color:var(--gold)}
 .hero p{color:#f3e3e8;font-size:15px;line-height:1.5}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
 .chip{background:rgba(255,255,255,.1);border:1px solid rgba(245,196,81,.35);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600}
 label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
-input,select{width:100%;font:500 16px Montserrat;padding:13px 14px;border:1.5px solid #e3cfd6;border-radius:12px;background:#fff;color:var(--dark);outline:none}
+input,select{width:100%;font:500 16px Montserrat;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--dark);outline:none}
 input:focus,select:focus{border-color:var(--bordo2)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .seg.two{grid-template-columns:1fr 1fr}
-.seg button{border:1.5px solid #e3cfd6;background:#fff;border-radius:12px;padding:12px 4px;font:600 15px Montserrat;color:var(--dark);cursor:pointer}
+.seg button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 4px;font:600 15px Montserrat;color:var(--dark);cursor:pointer}
 .seg button.on{background:var(--bordo);border-color:var(--bordo);color:#fff}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#6b4a55;margin-top:14px;line-height:1.4}
 .agree input{width:20px;height:20px;flex:none;margin-top:1px}
-.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:800 17px Montserrat;cursor:pointer;margin-top:18px;background:linear-gradient(180deg,#FFD873,var(--gold));color:var(--dark);box-shadow:0 8px 20px rgba(245,196,81,.35)}
-.btn:disabled{opacity:.5;cursor:default}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:800 17px Montserrat;cursor:pointer;margin-top:18px;background:linear-gradient(180deg,#FFD873,var(--gold));color:var(--dark);box-shadow:0 8px 20px rgba(245,196,81,.35);text-align:center;text-decoration:none}
 .btn.ghost{background:transparent;border:2px solid var(--bordo);color:var(--bordo);box-shadow:none}
-.err{color:var(--bad);font-size:13px;margin-top:6px;min-height:16px}
-.muted{color:#8a6a74;font-size:13px;line-height:1.45}
-.top{position:sticky;top:0;z-index:5;background:rgba(30,10,18,.92);backdrop-filter:blur(8px);margin:-18px -18px 16px;padding:12px 18px}
-.top .t1{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px}
-.timer{background:var(--gold);color:var(--dark);border-radius:999px;padding:4px 11px;font-variant-numeric:tabular-nums}
+.err{color:var(--bad);font-size:13px;margin-top:8px;min-height:16px;line-height:1.4}
+.muted{color:var(--mut);font-size:13px;line-height:1.45}
+.top{position:sticky;top:0;z-index:5;background:rgba(30,10,18,.94);backdrop-filter:blur(8px);margin:-18px -16px 16px;padding:12px 16px}
+.top .t1{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:700;font-size:14px}
+.timer{flex:none;background:var(--gold);color:var(--dark);border-radius:999px;padding:4px 11px;font-variant-numeric:tabular-nums}
 .timer.low{background:#ff6b6b;color:#fff}
 .bar{height:5px;background:rgba(255,255,255,.15);border-radius:9px;margin-top:9px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
 .qn{font-size:13px;font-weight:700;color:var(--bordo2);letter-spacing:.3px}
-.cond{font-size:14px;color:#6b4a55;margin:8px 0 4px;font-style:italic}
-.qtext{font-size:18px;font-weight:600;line-height:1.45;margin:8px 0 14px;white-space:pre-line}
-.pair{font-size:22px;font-weight:800;text-align:center;margin:10px 0 16px;color:var(--bordo)}
+.part{display:inline-block;font-size:12px;font-weight:700;color:var(--gold2);margin-left:6px}
+.cond{font-size:15px;color:#6b4a55;margin:10px 0 4px;line-height:1.45}
+.qtext{font-size:17px;font-weight:600;line-height:1.5;margin:10px 0 14px;white-space:pre-line}
+.pair{font-size:22px;font-weight:800;text-align:center;margin:12px 0 16px;color:var(--bordo)}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 16px}
-.cmp div{border:1.5px solid #e3cfd6;border-radius:14px;padding:12px;text-align:center;background:#fff}
-.cmp b{display:block;font-size:12px;color:#8a6a74;margin-bottom:6px;letter-spacing:.4px}
-.cmp span{font-size:20px;font-weight:700}
+.cmp div{border:1.5px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center;background:#fff}
+.cmp b{display:block;font-size:11px;color:var(--mut);margin-bottom:6px;letter-spacing:.4px}
+.cmp span{font-size:18px;font-weight:700;line-height:1.35}
 .opts{display:grid;gap:9px}
-.opt{display:flex;gap:12px;align-items:center;text-align:left;border:1.5px solid #e3cfd6;background:#fff;border-radius:14px;padding:13px 14px;font:500 16px Montserrat;color:var(--dark);cursor:pointer}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font:500 16px/1.4 Montserrat;color:var(--dark);cursor:pointer}
 .opt .l{flex:none;width:30px;height:30px;border-radius:50%;background:#f3e6ea;display:grid;place-items:center;font-weight:800;color:var(--bordo)}
 .opt.on{border-color:var(--bordo);background:#fff4f6}
 .opt.on .l{background:var(--bordo);color:#fff}
 .nav{display:flex;gap:10px;margin-top:16px}
 .nav .btn{margin-top:0}
-.dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.dots button{width:30px;height:30px;border-radius:8px;border:1.5px solid #e3cfd6;background:#fff;font:700 12px Montserrat;color:#8a6a74;cursor:pointer}
-.dots button.done{background:#f3e6ea;color:var(--bordo);border-color:#e3cfd6}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.dots button{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font:700 12px Montserrat;color:var(--mut);cursor:pointer}
+.dots button.done{background:#f3e6ea;color:var(--bordo)}
 .dots button.cur{border-color:var(--bordo);color:var(--bordo)}
-.intro{white-space:pre-line;font-size:15px;line-height:1.55;margin:10px 0 4px}
-.score{font-size:56px;font-weight:800;color:var(--bordo);line-height:1}
-.score small{font-size:22px;color:#8a6a74}
-.secres{display:grid;gap:10px;margin:18px 0}
-.secres>div{background:#fff;border-radius:14px;padding:12px 14px}
-.secres .h span:last-child{white-space:nowrap;margin-left:10px}
-.secres .h{display:flex;justify-content:space-between;font-weight:700;font-size:14px}
-.secres .b{height:8px;background:#f3e6ea;border-radius:9px;margin-top:8px;overflow:hidden}
-.secres .b i{display:block;height:100%;background:var(--bordo)}
-.review{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.review span{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
-.review .y{background:var(--ok)}.review .n{background:var(--bad)}.review .s{background:#bba}
+.intro{white-space:pre-line;font-size:15px;line-height:1.6;margin:10px 0 4px}
+.txtbtn{display:flex;align-items:center;justify-content:space-between;width:100%;border:1.5px dashed var(--bordo2);background:#fff;border-radius:12px;padding:11px 14px;font:700 14px Montserrat;color:var(--bordo);cursor:pointer;margin-top:10px}
+.text{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px 12px;margin-top:10px;max-height:58vh;overflow:auto;font-size:14px;line-height:1.55}
+.text h4{font-size:15px;margin:4px 0 8px;color:var(--bordo)}
+.text .ln{display:grid;grid-template-columns:26px 1fr;gap:6px}
+.text .ln i{font-style:normal;font-size:11px;color:var(--mut);text-align:right;padding-top:3px}
+/* результат */
+.big{display:flex;align-items:baseline;gap:8px;margin-top:6px}
+.big b{font-size:64px;font-weight:800;color:var(--bordo);line-height:1}
+.big small{font-size:20px;color:var(--mut);font-weight:700}
+.scale{position:relative;height:12px;border-radius:9px;background:linear-gradient(90deg,#e9c6cf,#f5c451 55%,#2e7d32);margin:22px 0 30px}
+.scale .me{position:absolute;top:-7px;width:4px;height:26px;background:var(--dark);border-radius:3px;transform:translateX(-2px)}
+.scale .mk{position:absolute;top:16px;font-size:11px;color:var(--mut);transform:translateX(-50%);white-space:nowrap}
+.scale .mk::before{content:'';position:absolute;left:50%;top:-6px;width:1px;height:6px;background:var(--mut)}
+.badge{display:inline-block;border-radius:999px;padding:6px 12px;font-weight:700;font-size:13px;margin:4px 6px 0 0}
+.badge.ok{background:#e3f1e4;color:var(--ok)}.badge.no{background:#fbe3e3;color:var(--bad)}.badge.g{background:#fff1c9;color:#7a5a00}
+h3.h{font-size:17px;margin:2px 0 10px}
+.rows{display:grid;gap:10px}
+.rw{background:#fff;border-radius:14px;padding:12px 14px}
+.rw .h{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:14px}
+.rw .h span:last-child{white-space:nowrap}
+.rw .b{height:8px;background:#f3e6ea;border-radius:9px;margin-top:8px;overflow:hidden}
+.rw .b i{display:block;height:100%;background:var(--bordo)}
+.rw .s{font-size:12px;color:var(--mut);margin-top:6px}
+.cells{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.cells span{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
+.cells .y{background:var(--ok)}.cells .n{background:var(--bad)}.cells .s{background:#bdb3b6}
+.tp{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;font-size:14px;padding:8px 0;border-bottom:1px solid #f0e2e6}
+.tp:last-child{border:0}
+.tp .b{grid-column:1/-1;height:6px;background:#f3e6ea;border-radius:9px;overflow:hidden}
+.tp .b i{display:block;height:100%}
+.tip{background:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.5;margin-top:8px}
+details{background:#fff;border-radius:12px;padding:10px 12px;margin-top:8px}
+summary{cursor:pointer;font-weight:700;font-size:14px;line-height:1.4}
+details p{font-size:14px;line-height:1.5;margin-top:8px}
 .cta{background:var(--bordo);color:#fff;border-radius:16px;padding:18px;margin-top:16px}
 .cta h3{font-size:18px;margin-bottom:6px}
 .cta p{color:#f3e3e8;font-size:14px;line-height:1.5}
 .hide{display:none!important}
 footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-height:1.5}
+@media(max-width:380px){.cmp{grid-template-columns:1fr}.big b{font-size:54px}}
 </style>
 </head>
 <body>
@@ -93,25 +117,24 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
     <div class="lang"><button data-l="ky" class="on">KG</button><button data-l="ru">RU</button></div>
   </header>
 
-  <!-- 1. Анкета -->
   <section id="s-form">
     <div class="hero">
       <h1 data-t="h1"></h1>
       <p data-t="lead"></p>
-      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span></div>
+      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span><span class="chip" data-t="c4"></span></div>
     </div>
     <div class="card">
       <b style="font-size:18px" data-t="formTitle"></b>
       <p class="muted" style="margin-top:4px" data-t="formSub"></p>
-      <label data-t="fName"></label>
+      <label for="f-name" data-t="fName"></label>
       <input id="f-name" autocomplete="name">
-      <label data-t="fPhone"></label>
+      <label for="f-phone" data-t="fPhone"></label>
       <input id="f-phone" type="tel" inputmode="tel" placeholder="0700 123 456" autocomplete="tel">
       <label data-t="fClass"></label>
       <div class="seg" id="f-class"><button>9</button><button>10</button><button>11</button><button data-t="grad" data-v="grad"></button></div>
       <div class="row">
-        <div><label data-t="fRegion"></label><select id="f-region"></select></div>
-        <div><label data-t="fCity"></label><input id="f-city"></div>
+        <div><label for="f-region" data-t="fRegion"></label><select id="f-region"></select></div>
+        <div><label for="f-city" data-t="fCity"></label><input id="f-city"></div>
       </div>
       <label data-t="fLang"></label>
       <div class="seg two" id="f-tlang"><button data-v="ky">Кыргызча</button><button data-v="ru">Русский</button></div>
@@ -121,19 +144,16 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
     </div>
   </section>
 
-  <!-- 2. Вступление к разделу -->
   <section id="s-intro" class="hide">
     <div class="card">
       <div class="qn" id="i-step"></div>
-      <h2 style="margin:6px 0 4px;font-size:22px" id="i-title"></h2>
-      <div class="muted" id="i-meta"></div>
+      <h2 style="margin:6px 0 4px;font-size:22px;line-height:1.25" id="i-title"></h2>
       <div class="intro" id="i-text"></div>
-      <p class="muted" style="margin-top:10px" data-t="noBack"></p>
+      <p class="muted" style="margin-top:12px" data-t="noBack"></p>
       <button class="btn" id="i-go" data-t="begin"></button>
     </div>
   </section>
 
-  <!-- 3. Вопрос -->
   <section id="s-q" class="hide">
     <div class="top">
       <div class="t1"><span id="q-sec"></span><span class="timer" id="q-timer">00:00</span></div>
@@ -141,6 +161,7 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
     </div>
     <div class="card">
       <div class="qn" id="q-num"></div>
+      <div id="q-text"></div>
       <div id="q-body"></div>
       <div class="opts" id="q-opts"></div>
       <div class="nav">
@@ -152,18 +173,23 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
     </div>
   </section>
 
-  <!-- 4. Результат -->
   <section id="s-res" class="hide">
     <div class="card">
       <div class="qn" data-t="resTitle"></div>
-      <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px"><div class="score" id="r-score"></div></div>
-      <p style="margin-top:10px;font-weight:600;line-height:1.45" id="r-msg"></p>
-      <div class="secres" id="r-secs"></div>
-      <p class="muted" data-t="legend"></p>
-      <div class="cta">
+      <div class="big"><b id="r-score"></b><small id="r-max"></small></div>
+      <div class="scale" id="r-scale"></div>
+      <div id="r-badges"></div>
+      <p style="margin-top:12px;font-weight:600;line-height:1.5" id="r-msg"></p>
+      <p class="muted" style="margin-top:10px" data-t="approx"></p>
+    </div>
+    <div class="card"><h3 class="h" data-t="bySec"></h3><div class="rows" id="r-secs"></div><p class="muted" style="margin-top:10px" data-t="legend"></p></div>
+    <div class="card"><h3 class="h" data-t="byTopic"></h3><div id="r-topics"></div><div id="r-tips"></div></div>
+    <div class="card"><h3 class="h" data-t="mistakes"></h3><div id="r-review"></div></div>
+    <div class="card">
+      <div class="cta" style="margin-top:0">
         <h3 data-t="ctaH"></h3>
         <p data-t="ctaP"></p>
-        <a class="btn" style="text-align:center;text-decoration:none" id="r-ig" href="https://ig.me/m/novaup.kg" target="_blank" data-t="ctaBtn"></a>
+        <a class="btn" id="r-ig" href="https://ig.me/m/novaup.kg" target="_blank" rel="noopener" data-t="ctaBtn"></a>
       </div>
       <button class="btn ghost" id="r-again" data-t="again"></button>
     </div>
@@ -174,46 +200,90 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
 
 <script src="questions.js"></script>
 <script>
-// ===== Настройка: куда отправлять заявки (пусто = только сохраняется в браузере, для проверки) =====
+{
+// ===== Куда отправлять заявки (пусто = только в браузере) =====
 const LEAD_URL = '';
 
 const T = {
   ky: {
-    h1: 'Бекер <span>сынамык ЖРТ</span> — 45 мүнөттө', lead: 'Математика, аналогиялар жана сүйлөмдөрдү толуктоо. Чыныгы ЖРТдей: ар бир бөлүмгө өз убактысы. Жыйынтыкты дароо көрөсүз.',
-    c1: '30 суроо', c2: '45 мүнөт', c3: 'Бекер',
+    h1: 'Бекер <span>сынамык ЖРТ</span> чыныгы форматта', lead: 'ЦООМОнун түзүлүшү боюнча 4 бөлүм: математика, аналогиялар жана сүйлөмдөрдү толуктоо, окуу жана түшүнүү, практикалык грамматика. Ар бир бөлүмгө өз убактысы. Аягында — болжолдуу ЖРТ балы жана темалар боюнча толук анализ.',
+    c1: '75 суроо', c2: '1 саат 48 мүнөт', c3: '245 баллдык шкала', c4: 'Бекер',
     formTitle: 'Тестти баштоо үчүн анкетаны толтуруңуз', formSub: 'Жыйынтыкты жана каталардын талдоосун менеджер WhatsApp аркылуу жөнөтөт.',
     fName: 'Атыңыз', fPhone: 'Телефон номериңиз (WhatsApp)', fClass: 'Канчанчы класстасыз?', grad: 'Бүтүрдүм', fRegion: 'Облус', fCity: 'Шаар / айыл', fLang: 'Тест тили',
     agree: 'Маалыматтарымды NOVA Up менеджери мени менен байланышуу үчүн колдонушуна макулмун.', start: 'Тестти баштоо →',
     errName: 'Атыңызды жазыңыз', errPhone: 'Туура номер жазыңыз (мисалы, 0700 123 456)', errClass: 'Классты тандаңыз', errRegion: 'Облусту тандаңыз', errCity: 'Шаарды же айылды жазыңыз', errLang: 'Тест тилин тандаңыз', errOk: 'Макулдукту белгилеңиз',
-    step: (i, n) => `${n} бөлүмдүн ${i}-бөлүмү`, meta: (q, m) => `${q} суроо · ${m} мүнөт`, noBack: 'Убакыт бүткөндө кийинки бөлүм өзү ачылат. Чыныгы ЖРТдей эле мурунку бөлүмгө кайтууга болбойт.', begin: 'Баштадык',
-    qnum: (i, n) => `${n} суроонун ${i}-суроосу`, prev: '← Артка', next: 'Кийинки →', finishSec: 'Бөлүмдү бүтүрүү', confirmSec: 'Бөлүмдү бүтүрөсүзбү? Кайра кайтууга болбойт. Ырастоо үчүн дагы бир жолу басыңыз.', confirmBtn: 'Ооба, бүтүрөм', colA: 'А МАМЫЧАСЫ', colB: 'Б МАМЫЧАСЫ',
-    resTitle: 'СИЗДИН ЖЫЙЫНТЫК', legend: 'Жашыл — туура, кызыл — ката, боз — жооп берилген эмес.',
-    msg: p => p >= 80 ? 'Мыкты! Сиз ЖРТга жакшы даярсыз. Жогорку баллды бекемдөө үчүн татаал темаларды кайталап туруңуз.' : p >= 50 ? 'Жакшы негиз бар! Бир нече тема боюнча бош жерлер бар — аларды жапсаңыз, балл бир топ жогорулайт.' : 'Азыр эң туура убак даярданууну баштоого. Негизги темалардан баштасаңыз, жыйынтык тез жакшырат.',
-    ctaH: 'Каталарды бирге талдайлы', ctaP: 'Менеджер Сизге WhatsApp аркылуу жазып, кайсы темалар кыйын экенин айтып, NOVA Up платформасында кантип даярданууну түшүндүрөт.', ctaBtn: 'Директке жазуу', again: 'Тестти кайра тапшыруу',
-    foot: 'NOVA Up — ЖРТга онлайн даярдык. Суроолор ЦООМОнун расмий брошюрасынын үлгүсүндө түзүлгөн.',
+    step: (i, n) => `${n} бөлүмдүн ${i}-бөлүмү`, noBack: 'Убакыт бүткөндө кийинки бөлүм өзү ачылат. Чыныгы ЖРТдей эле мурунку бөлүмгө кайтууга болбойт. Бөлүмдүн ичинде суроолордун ортосунда эркин жылсаңыз болот.', begin: 'Баштадык',
+    qnum: (i, n) => `${n} суроонун ${i}-суроосу`, part1: '1-бөлүк · салыштыруу', part2: '2-бөлүк · маселелер', prev: '← Артка', next: 'Кийинки →', finishSec: 'Бөлүмдү бүтүрүү',
+    confirmSec: n => (n ? `Жооп берилбеген суроолор: ${n}. ` : '') + 'Бөлүмдү бүтүрөсүзбү? Кайра кайтууга болбойт. Ырастоо үчүн дагы бир жолу басыңыз.', confirmBtn: 'Ооба, бүтүрөм',
+    colA: 'А МАМЫЧАСЫ', colB: 'Б МАМЫЧАСЫ', cmpO: ['А мамычасындагы чоңдук чоң', 'Б мамычасындагы чоңдук чоң', 'Экөө барабар', 'Аныктоого мүмкүн эмес'],
+    showText: 'Текстти көрсөтүү', hideText: 'Текстти жашыруу', line: 'сап',
+    resTitle: 'БОЛЖОЛДУУ ЖРТ БАЛЫ', approx: 'Балл болжолдуу: ЦООМО чийки жоопторду баллга которуунун так формуласын жарыялабайт. Биз ЦООМОнун расмий статистикасына (орточо балл 119,9, максимум 245) таянып эсептедик. Бул тест чыныгы ЖРТнын жарымы көлөмүндө.',
+    pass: 'Босого 110 балл — өттүңүз', fail: 'Босого 110 балл — азырынча жетпейт', better: p => `Катышуучулардын болжол менен ${p}%нан жогору`, raw: (c, n) => `Туура жооптор: ${c} / ${n}`,
+    msg: s => s >= 200 ? 'Мыкты жыйынтык! Сиз грантка жана алтын сертификатка умтулсаңыз болот. Эми татаал тапшырмалардагы ылдамдыкты бекемдеңиз.' : s >= 150 ? 'Жакшы жыйынтык! Грантка мүмкүнчүлүк бар. Төмөндөгү алсыз темаларды жапсаңыз, балл дагы 20–40ка өсөт.' : s >= 110 ? 'Босогодон өттүңүз, бирок грант үчүн дагы иштөө керек. Алсыз темаларды системалуу кайталасаңыз, балл тез өсөт.' : 'Азыр эң туура убак даярданууну баштоого. Негизги темалардан баштасаңыз, бир нече айда босогодон ишенимдүү өтөсүз.',
+    bySec: 'Бөлүмдөр боюнча', byTopic: 'Темалар боюнча', mistakes: 'Каталар жана туура жооптор', legend: 'Жашыл — туура, кызыл — ката, боз — жооп жок.',
+    time: (u, m) => `Убакыт: ${u} / ${m} мүн`, weak: 'Эмнеге көңүл буруу керек', noMist: 'Ката жок — азаматсыз! 🎉', your: 'Сиздин жооп', right: 'Туура жооп', none: 'жооп жок',
+    ctaH: 'Каталарды бирге талдайлы', ctaP: 'Менеджер Сизге WhatsApp аркылуу жазып, кайсы темалар кыйын экенин түшүндүрөт жана NOVA Up платформасында кантип даярданууну айтып берет.', ctaBtn: 'Директке жазуу', again: 'Тестти кайра тапшыруу',
+    foot: 'NOVA Up — ЖРТга онлайн даярдык. Суроолор ЦООМОнун расмий брошюрасынын үлгүсүндө жаңыдан түзүлгөн.',
     regions: ['Бишкек', 'Ош шаары', 'Чүй облусу', 'Ош облусу', 'Жалал-Абад облусу', 'Баткен облусу', 'Ысык-Көл облусу', 'Нарын облусу', 'Талас облусу'], pick: 'Тандаңыз'
   },
   ru: {
-    h1: 'Бесплатный <span>пробный ОРТ</span> — за 45 минут', lead: 'Математика, аналогии и дополнение предложений. Как на настоящем ОРТ: у каждого раздела своё время. Результат — сразу.',
-    c1: '30 вопросов', c2: '45 минут', c3: 'Бесплатно',
+    h1: 'Бесплатный <span>пробный ОРТ</span> в настоящем формате', lead: '4 раздела по структуре ЦООМО: математика, аналогии и дополнение предложений, чтение и понимание, практическая грамматика. У каждого раздела своё время. В конце — примерный балл ОРТ и подробный разбор по темам.',
+    c1: '75 вопросов', c2: '1 ч 48 мин', c3: 'Шкала до 245', c4: 'Бесплатно',
     formTitle: 'Заполните анкету, чтобы начать тест', formSub: 'Результат и разбор ошибок менеджер пришлёт в WhatsApp.',
     fName: 'Ваше имя', fPhone: 'Номер телефона (WhatsApp)', fClass: 'В каком вы классе?', grad: 'Выпускник', fRegion: 'Область', fCity: 'Город / село', fLang: 'Язык теста',
     agree: 'Согласен(на), что менеджер NOVA Up свяжется со мной по указанным данным.', start: 'Начать тест →',
     errName: 'Напишите имя', errPhone: 'Укажите верный номер (например, 0700 123 456)', errClass: 'Выберите класс', errRegion: 'Выберите область', errCity: 'Укажите город или село', errLang: 'Выберите язык теста', errOk: 'Отметьте согласие',
-    step: (i, n) => `Раздел ${i} из ${n}`, meta: (q, m) => `${q} вопросов · ${m} минут`, noBack: 'Когда время выйдет, откроется следующий раздел. Как на настоящем ОРТ, вернуться к прошлому разделу нельзя.', begin: 'Начать',
-    qnum: (i, n) => `Вопрос ${i} из ${n}`, prev: '← Назад', next: 'Далее →', finishSec: 'Завершить раздел', confirmSec: 'Завершить раздел? Вернуться к нему будет нельзя. Нажмите ещё раз, чтобы подтвердить.', confirmBtn: 'Да, завершить', colA: 'КОЛОНКА А', colB: 'КОЛОНКА Б',
-    resTitle: 'ВАШ РЕЗУЛЬТАТ', legend: 'Зелёный — верно, красный — ошибка, серый — без ответа.',
-    msg: p => p >= 80 ? 'Отлично! Вы хорошо готовы к ОРТ. Чтобы закрепить высокий балл, повторяйте сложные темы.' : p >= 50 ? 'Хорошая база! Есть пробелы в нескольких темах — закроете их, и балл заметно вырастет.' : 'Сейчас лучшее время начать подготовку. Начните с базовых тем — результат быстро вырастет.',
-    ctaH: 'Разберём ошибки вместе', ctaP: 'Менеджер напишет Вам в WhatsApp, покажет, какие темы даются труднее, и расскажет, как готовиться на платформе NOVA Up.', ctaBtn: 'Написать в директ', again: 'Пройти ещё раз',
-    foot: 'NOVA Up — онлайн-подготовка к ОРТ. Вопросы составлены по образцу официальной брошюры ЦООМО.',
+    step: (i, n) => `Раздел ${i} из ${n}`, noBack: 'Когда время выйдет, откроется следующий раздел. Как на настоящем ОРТ, вернуться к прошлому разделу нельзя. Внутри раздела можно свободно переходить между вопросами.', begin: 'Начать',
+    qnum: (i, n) => `Вопрос ${i} из ${n}`, part1: 'Часть I · сравнение', part2: 'Часть II · задачи', prev: '← Назад', next: 'Далее →', finishSec: 'Завершить раздел',
+    confirmSec: n => (n ? `Без ответа: ${n}. ` : '') + 'Завершить раздел? Вернуться к нему будет нельзя. Нажмите ещё раз, чтобы подтвердить.', confirmBtn: 'Да, завершить',
+    colA: 'КОЛОНКА А', colB: 'КОЛОНКА Б', cmpO: ['Больше величина в колонке А', 'Больше величина в колонке Б', 'Величины равны', 'Определить невозможно'],
+    showText: 'Показать текст', hideText: 'Скрыть текст', line: 'строка',
+    resTitle: 'ПРИМЕРНЫЙ БАЛЛ ОРТ', approx: 'Балл примерный: ЦООМО не публикует точную формулу перевода ответов в баллы. Мы рассчитали его по официальной статистике ЦООМО (средний балл 119,9, максимум 245). Этот тест — половина объёма настоящего ОРТ.',
+    pass: 'Порог 110 баллов — пройден', fail: 'Порог 110 баллов — пока не пройден', better: p => `Лучше, чем примерно ${p}% участников`, raw: (c, n) => `Верных ответов: ${c} из ${n}`,
+    msg: s => s >= 200 ? 'Отличный результат! Можно целиться в грант и золотой сертификат. Теперь отработайте скорость на сложных заданиях.' : s >= 150 ? 'Хороший результат! Шансы на грант есть. Закройте слабые темы ниже — и балл вырастет ещё на 20–40.' : s >= 110 ? 'Порог пройден, но для гранта нужно поработать. Системно повторите слабые темы — балл быстро вырастет.' : 'Сейчас лучшее время начать подготовку. Начните с базовых тем — за несколько месяцев уверенно пройдёте порог.',
+    bySec: 'По разделам', byTopic: 'По темам', mistakes: 'Ошибки и верные ответы', legend: 'Зелёный — верно, красный — ошибка, серый — без ответа.',
+    time: (u, m) => `Время: ${u} из ${m} мин`, weak: 'На что обратить внимание', noMist: 'Ошибок нет — отлично! 🎉', your: 'Ваш ответ', right: 'Верный ответ', none: 'нет ответа',
+    ctaH: 'Разберём ошибки вместе', ctaP: 'Менеджер напишет Вам в WhatsApp, объяснит, какие темы даются труднее, и расскажет, как готовиться на платформе NOVA Up.', ctaBtn: 'Написать в директ', again: 'Пройти ещё раз',
+    foot: 'NOVA Up — онлайн-подготовка к ОРТ. Вопросы составлены заново по образцу официальной брошюры ЦООМО.',
     regions: ['Бишкек', 'г. Ош', 'Чуйская область', 'Ошская область', 'Джалал-Абадская область', 'Баткенская область', 'Иссык-Кульская область', 'Нарынская область', 'Таласская область'], pick: 'Выберите'
   }
 };
+const TOPIC = {
+  arith: ['Арифметика: бөлчөктөр, даражалар, тамырлар', 'Арифметика: дроби, степени, корни', 'Бөлчөктөр, даражалар жана тамырлар менен амалдарды кайталаңыз; оозеки эсептөөнү машыктырыңыз.', 'Повторите действия с дробями, степенями и корнями; тренируйте устный счёт.'],
+  percent: ['Пайыздар, катыштар, пропорциялар', 'Проценты, отношения, пропорции', 'Пайызды табуу, пайызга көбөйтүү/азайтуу жана пропорция түзүү боюнча маселелерди чыгарыңыз.', 'Решайте задачи на нахождение процента, повышение/понижение на процент и пропорции.'],
+  algebra: ['Алгебра: туюнтмалар, теңдемелер', 'Алгебра: выражения, уравнения', 'Кыскача көбөйтүү формулаларын, теңдемелерди жана барабарсыздыктарды чыгарууну кайталаңыз.', 'Повторите формулы сокращённого умножения, уравнения и неравенства.'],
+  geometry: ['Геометрия', 'Геометрия', 'Бурчтардын, аянттардын формулаларын жана Пифагор теоремасын бекемдеңиз.', 'Закрепите формулы углов, площадей и теорему Пифагора.'],
+  data: ['Маалымат, статистика, ыктымалдык', 'Данные, статистика, вероятность', 'Орточо маанини, таблица менен иштөөнү жана жөнөкөй ыктымалдыкты машыктырыңыз.', 'Потренируйте среднее значение, работу с таблицами и простую вероятность.'],
+  logic: ['Логика жана жаңы амалдар', 'Логика и нестандартные задачи', 'Жаңы белгилүү амалдар жана «аныктоого мүмкүн эмес» тузактары бар тапшырмаларды көбүрөөк иштеңиз.', 'Больше решайте задания с новыми операциями и ловушками «невозможно определить».'],
+  analogy: ['Аналогиялар', 'Аналогии', 'Ар бир жуп үчүн «X — бул Y үчүн …» деген сүйлөм түзүп, байланыштын түрүн аныктаңыз.', 'Для каждой пары составляйте предложение «X — это … для Y», чтобы точно определить тип связи.'],
+  completion: ['Сүйлөмдөрдү толуктоо', 'Дополнение предложений', '«бирок», «ошондуктан», «карабастан» сыяктуу байланыштыргыч сөздөргө көңүл буруңуз — алар маанини аныктайт.', 'Обращайте внимание на слова-связки «но», «поэтому», «несмотря на» — они задают смысл пропуска.'],
+  words: ['Сөздүн контексттеги мааниси', 'Значение слова в контексте', 'Сөздүн маанисин сүйлөмдөн гана эмес, бүт абзацтан издеңиз.', 'Определяйте значение слова по всему абзацу, а не только по предложению.'],
+  main: ['Негизги ой жана максат', 'Главная мысль и цель', 'Окуп бүткөндөн кийин тексттин негизги оюн бир сүйлөм менен айтып көрүңүз.', 'После чтения формулируйте главную мысль текста одним предложением.'],
+  detail: ['Тексттеги фактылар', 'Факты и детали текста', 'Жоопту эстен эмес, тексттен тапкыла: тиешелүү сапты кайра окуңуз.', 'Ищите ответ в тексте, а не в памяти: перечитывайте нужную строку.'],
+  inference: ['Жыйынтык чыгаруу, автордун позициясы', 'Выводы и позиция автора', 'Текстте түз айтылбаган, бирок андан келип чыккан жыйынтыкты издөөнү машыктырыңыз.', 'Тренируйтесь находить вывод, который прямо не сказан, но следует из текста.'],
+  compare: ['Үзүндүлөрдү салыштыруу', 'Сравнение отрывков', 'Эки үзүндүнүн ар биринин позициясын өзүнчө белгилеп, анан салыштырыңыз.', 'Отмечайте позицию каждого отрывка отдельно, потом сравнивайте.'],
+  spelling: ['Орфография', 'Орфография', 'Үндүүлөрдүн үндөшүү мыйзамын жана кошмо сөздөрдүн жазылышын кайталаңыз.', 'Повторите правила правописания корней, приставок и суффиксов.'],
+  punct: ['Тыныш белгилер', 'Пунктуация', 'Бир өңчөй мүчөлөрдө, кайрылууда жана кыстарма сөздөрдө тыныш белгилерди кайталаңыз.', 'Повторите запятые при однородных членах, обращениях, вводных словах и оборотах.'],
+  wordform: ['Сөз жасоо жана сөздүн формалары', 'Словообразование и формы слов', 'Сөз жасоочу мүчөлөрдү жана жөндөмө/таандык мүчөлөрүнүн варианттарын бекемдеңиз.', 'Закрепите способы словообразования и формы слов.'],
+  lexis: ['Сөздүн лексикалык мааниси', 'Лексическое значение слов', 'Синоним, антоним жана көп маанилүү сөздөрдү контекстте колдонууну машыктырыңыз.', 'Тренируйте синонимы, антонимы, паронимы и многозначные слова в контексте.'],
+  norms: ['Сүйлөмдүн туура түзүлүшү', 'Нормы построения предложений', 'Сөздөрдүн байланышын жана сүйлөмдөгү сөз тартибин текшериңиз.', 'Проверяйте согласование, управление и деепричастные обороты.'],
+  fill: ['Ылайыктуу сөздү коюу', 'Подбор подходящего слова', 'Сүйлөмдүн маанисине жана грамматикасына эң так келген сөздү тандаңыз.', 'Выбирайте слово, точно подходящее и по смыслу, и по грамматике.']
+};
 const L = ['А', 'Б', 'В', 'Г', 'Д'];
+// примерный перевод доли верных ответов в шкалу ОРТ (по распределению ЦООМО: среднее ~120, σ ~32, максимум 245)
+const ANCH = [[0, 40], [0.25, 72], [0.4, 98], [0.5, 115], [0.6, 132], [0.7, 152], [0.8, 174], [0.9, 202], [0.96, 226], [1, 240]];
+const toScale = p => { for (let i = 1; i < ANCH.length; i++) if (p <= ANCH[i][0]) { const [x0, y0] = ANCH[i - 1], [x1, y1] = ANCH[i]; return Math.round(y0 + (y1 - y0) * (p - x0) / (x1 - x0)); } return 240; };
+const cdf = z => { const t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2), p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; };
+
 let ui = 'ky';
-const st = { lead: {}, tl: null, sec: 0, q: 0, ans: {}, left: 0, timer: null, started: null };
+const st = { lead: {}, tl: null, sec: 0, q: 0, ans: {}, left: 0, timer: null, started: 0, used: {}, secStart: 0, armed: false, textOpen: true };
 const $ = s => document.querySelector(s);
-const tx = v => typeof v === 'string' ? (v.includes('|') ? v.split('|')[st.tl === 'ru' ? 1 : 0] : v) : v[st.tl];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const tx = v => v == null ? '' : typeof v === 'string' ? v : (v[st.tl] ?? v.ru ?? '');
+const secs = () => ORT.sections;
+const items = s => s.items || (s.byLang[st.tl].items || s.byLang[st.tl]);
+const texts = s => s.byLang && s.byLang[st.tl].texts;
+const keyOf = (s, i) => s.id + ':' + i;
 
 function applyUI() {
   document.documentElement.lang = ui;
@@ -224,41 +294,40 @@ function applyUI() {
   document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === ui));
   if (!$('#s-intro').classList.contains('hide')) showIntro();
   if (!$('#s-q').classList.contains('hide')) renderQ();
+  if (!$('#s-res').classList.contains('hide')) results(true);
 }
 document.querySelectorAll('.lang button').forEach(b => b.onclick = () => { ui = b.dataset.l; applyUI(); });
 function seg(id) { document.querySelectorAll(id + ' button').forEach(b => b.onclick = () => { document.querySelectorAll(id + ' button').forEach(x => x.classList.remove('on')); b.classList.add('on'); if (id === '#f-tlang') { ui = b.dataset.v; applyUI(); } }); }
 seg('#f-class'); seg('#f-tlang');
 const segVal = id => { const b = $(id + ' button.on'); return b ? (b.dataset.v || b.textContent) : ''; };
-
 function show(id) { ['#s-form', '#s-intro', '#s-q', '#s-res'].forEach(s => $(s).classList.toggle('hide', s !== id)); scrollTo(0, 0); }
 
 async function sendLead(extra) {
   const data = { ...st.lead, ...extra, page: location.href, ts: new Date().toISOString() };
   try { const all = JSON.parse(localStorage.getItem('ort_leads') || '[]'); all.push(data); localStorage.setItem('ort_leads', JSON.stringify(all)); } catch (e) {}
-  if (!LEAD_URL) { console.log('lead', data); return; }
-  try { await fetch(LEAD_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }); } catch (e) { console.warn(e); }
+  if (!LEAD_URL) return;
+  try { await fetch(LEAD_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }); } catch (e) {}
 }
 
 $('#f-go').onclick = () => {
-  const t = T[ui], name = $('#f-name').value.trim(), phone = $('#f-phone').value.replace(/[^\d+]/g, ''), digits = phone.replace(/\D/g, '');
+  const t = T[ui], name = $('#f-name').value.trim(), digits = $('#f-phone').value.replace(/\D/g, '');
   const cls = segVal('#f-class'), reg = $('#f-region').value, city = $('#f-city').value.trim(), tl = segVal('#f-tlang');
   const err = !name ? t.errName : (digits.length < 9 || digits.length > 12) ? t.errPhone : !cls ? t.errClass : !reg ? t.errRegion : !city ? t.errCity : !tl ? t.errLang : !$('#f-ok').checked ? t.errOk : '';
   $('#f-err').textContent = err; if (err) return;
   st.lead = { name, phone: $('#f-phone').value.trim(), class: cls, region: reg, city, test_lang: tl };
-  st.tl = tl; st.sec = 0; st.ans = {}; st.started = Date.now();
+  st.tl = tl; st.sec = 0; st.ans = {}; st.used = {}; st.started = Date.now();
   sendLead({ stage: 'анкета' });
   showIntro();
 };
 
 function showIntro() {
-  const s = ORT.sections[st.sec], t = T[ui];
-  $('#i-step').textContent = t.step(st.sec + 1, ORT.sections.length);
+  const s = secs()[st.sec], t = T[ui];
+  $('#i-step').textContent = t.step(st.sec + 1, secs().length);
   $('#i-title').textContent = tx(s.title);
-  $('#i-meta').textContent = t.meta(s.items.length, s.minutes);
   $('#i-text').textContent = tx(s.intro);
   show('#s-intro');
 }
-$('#i-go').onclick = () => { st.q = 0; st.left = ORT.sections[st.sec].minutes * 60; startTimer(); renderQ(); show('#s-q'); };
+$('#i-go').onclick = () => { st.q = 0; st.textOpen = true; st.left = secs()[st.sec].minutes * 60; st.secStart = Date.now(); startTimer(); renderQ(); show('#s-q'); };
 
 function startTimer() {
   clearInterval(st.timer);
@@ -272,55 +341,101 @@ function startTimer() {
   tick(); st.timer = setInterval(tick, 1000);
 }
 
-function renderQ() {
-  st.armed = false; if ($('#q-warn')) $('#q-warn').textContent = '';
-  const s = ORT.sections[st.sec], it = s.items[st.q], t = T[ui], key = s.id + ':' + st.q;
-  $('#q-sec').textContent = tx(s.title);
-  $('#q-num').textContent = t.qnum(st.q + 1, s.items.length);
-  let h = '';
-  if (it.cond) h += `<div class="cond">${tx(it.cond)}</div>`;
-  if (s.compare) h += `<div class="cmp"><div><b>${t.colA}</b><span>${tx(it.A)}</span></div><div><b>${t.colB}</b><span>${tx(it.B)}</span></div></div>`;
-  if (it.pair) h += `<div class="pair">${tx(it.pair)}</div>`;
-  if (it.q) h += `<div class="qtext">${tx(it.q)}</div>`;
-  $('#q-body').innerHTML = h;
-  const opts = s.compare ? ['', '', '', ''] : it.o;
-  $('#q-opts').innerHTML = opts.map((o, i) => `<button class="opt ${st.ans[key] === i ? 'on' : ''}" data-i="${i}"><span class="l">${L[i]}</span><span>${s.compare ? '' : tx(o)}</span></button>`).join('');
-  if (s.compare) $('#q-opts').querySelectorAll('.opt span:last-child').forEach((e, i) => e.textContent = st.tl === 'ru' ? ['больше А', 'больше Б', 'равны', 'нельзя определить'][i] : ['А чоң', 'Б чоң', 'барабар', 'аныктоого болбойт'][i]);
-  $('#q-opts').querySelectorAll('.opt').forEach(b => b.onclick = () => { st.ans[key] = +b.dataset.i; renderQ(); setTimeout(() => { if (st.q < s.items.length - 1) { st.q++; renderQ(); } }, 220); });
-  $('#q-prev').style.visibility = st.q ? 'visible' : 'hidden';
-  $('#q-next').textContent = st.q === s.items.length - 1 ? t.finishSec : t.next;
-  $('#q-dots').innerHTML = s.items.map((_, i) => `<button class="${st.ans[s.id + ':' + i] !== undefined ? 'done' : ''} ${i === st.q ? 'cur' : ''}">${i + 1}</button>`).join('');
-  $('#q-dots').querySelectorAll('button').forEach((b, i) => b.onclick = () => { st.q = i; renderQ(); });
-  const total = ORT.sections.reduce((a, x) => a + x.items.length, 0), before = ORT.sections.slice(0, st.sec).reduce((a, x) => a + x.items.length, 0);
-  $('#q-bar').style.width = ((before + Object.keys(st.ans).filter(k => k.startsWith(s.id)).length) / total * 100) + '%';
+function textHTML(tt) {
+  let n = 0;
+  return `<h4>${esc(tt.title || '')}</h4>` + (tt.intro ? `<p class="muted" style="margin-bottom:8px">${esc(tt.intro)}</p>` : '') +
+    tt.parts.map(p => { n = 0; return (p.label ? `<h4>${esc(p.label)}</h4>` : '') + p.lines.map(l => { n++; return `<div class="ln"><i>${n % 5 === 0 ? n : ''}</i><span>${esc(l)}</span></div>`; }).join(''); }).join('');
 }
-$('#q-prev').onclick = () => { if (st.q) { st.q--; renderQ(); } };
+
+function renderQ() {
+  st.armed = false; $('#q-warn').textContent = '';
+  const s = secs()[st.sec], its = items(s), it = its[st.q], t = T[ui], key = keyOf(s, st.q);
+  $('#q-sec').textContent = tx(s.title);
+  $('#q-num').innerHTML = esc(t.qnum(st.q + 1, its.length)) + (it.part ? `<span class="part">${it.part === 1 ? t.part1 : t.part2}</span>` : '');
+  // текст для чтения
+  const tt = texts(s);
+  if (tt && it.text !== undefined) {
+    $('#q-text').innerHTML = `<button class="txtbtn" id="q-tt">${st.textOpen ? t.hideText : t.showText} <span>${st.textOpen ? '▲' : '▼'}</span></button>` + (st.textOpen ? `<div class="text">${textHTML(tt[it.text])}</div>` : '');
+    $('#q-tt').onclick = () => { st.textOpen = !st.textOpen; renderQ(); };
+  } else $('#q-text').innerHTML = '';
+  let h = '';
+  if (it.cond) h += `<div class="cond">${esc(tx(it.cond))}</div>`;
+  if (it.kind === 'cmp') h += `<div class="cmp"><div><b>${t.colA}</b><span>${esc(tx(it.A))}</span></div><div><b>${t.colB}</b><span>${esc(tx(it.B))}</span></div></div>`;
+  if (it.pair) h += `<div class="pair">${esc(tx(it.pair))}</div>`;
+  if (it.q) h += `<div class="qtext">${esc(tx(it.q))}</div>`;
+  $('#q-body').innerHTML = h;
+  const opts = it.kind === 'cmp' ? t.cmpO : it.o.map(tx);
+  $('#q-opts').innerHTML = opts.map((o, i) => `<button class="opt ${st.ans[key] === i ? 'on' : ''}" data-i="${i}"><span class="l">${L[i]}</span><span>${esc(o)}</span></button>`).join('');
+  $('#q-opts').querySelectorAll('.opt').forEach(b => b.onclick = () => { st.ans[key] = +b.dataset.i; $('#q-opts').querySelectorAll('.opt').forEach(x => x.classList.toggle('on', x === b)); dots(); progress(); });
+  $('#q-prev').style.visibility = st.q ? 'visible' : 'hidden';
+  $('#q-next').textContent = st.q === its.length - 1 ? t.finishSec : t.next;
+  dots(); progress();
+}
+function dots() {
+  const s = secs()[st.sec], its = items(s);
+  $('#q-dots').innerHTML = its.map((_, i) => `<button class="${st.ans[keyOf(s, i)] !== undefined ? 'done' : ''} ${i === st.q ? 'cur' : ''}">${i + 1}</button>`).join('');
+  $('#q-dots').querySelectorAll('button').forEach((b, i) => b.onclick = () => go(i));
+}
+function progress() {
+  const total = secs().reduce((a, x) => a + items(x).length, 0);
+  $('#q-bar').style.width = (Object.keys(st.ans).length / total * 100) + '%';
+}
+function go(i) {
+  const s = secs()[st.sec], its = items(s);
+  if (texts(s) && its[i].text !== its[st.q].text) st.textOpen = true;
+  st.q = i; renderQ(); scrollTo(0, 0);
+}
+$('#q-prev').onclick = () => { if (st.q) go(st.q - 1); };
 $('#q-next').onclick = () => {
-  const s = ORT.sections[st.sec];
-  if (st.q < s.items.length - 1) { st.q++; renderQ(); return; }
-  if (st.armed) { st.armed = false; nextSection(); return; }
-  st.armed = true; $('#q-next').textContent = T[ui].confirmBtn; $('#q-warn').textContent = T[ui].confirmSec;
+  const s = secs()[st.sec], its = items(s);
+  if (st.q < its.length - 1) { go(st.q + 1); return; }
+  if (st.armed) { nextSection(); return; }
+  const miss = its.filter((_, i) => st.ans[keyOf(s, i)] === undefined).length;
+  st.armed = true; $('#q-next').textContent = T[ui].confirmBtn; $('#q-warn').textContent = T[ui].confirmSec(miss);
 };
 function nextSection() {
   clearInterval(st.timer);
-  if (st.sec < ORT.sections.length - 1) { st.sec++; showIntro(); } else results();
+  st.used[secs()[st.sec].id] = Math.min(secs()[st.sec].minutes, Math.ceil((Date.now() - st.secStart) / 60000));
+  if (st.sec < secs().length - 1) { st.sec++; showIntro(); } else results();
 }
 
-function results() {
-  const t = T[ui]; let ok = 0, n = 0; const per = [];
-  $('#r-secs').innerHTML = ORT.sections.map(s => {
-    let c = 0; const cells = s.items.map((it, i) => { const a = st.ans[s.id + ':' + i]; if (a === it.a) c++; return `<span class="${a === undefined ? 's' : a === it.a ? 'y' : 'n'}">${i + 1}</span>`; }).join('');
-    ok += c; n += s.items.length; per.push(`${s.id}: ${c}/${s.items.length}`);
-    return `<div><div class="h"><span>${tx(s.title)}</span><span>${c} / ${s.items.length}</span></div><div class="b"><i style="width:${c / s.items.length * 100}%"></i></div><div class="review">${cells}</div></div>`;
+function results(rerender) {
+  const t = T[ui], li = ui === 'ky' ? 0 : 1; let ok = 0, n = 0; const tp = {}, wrong = [], per = [];
+  $('#r-secs').innerHTML = secs().map(s => {
+    let c = 0; const its = items(s);
+    const cells = its.map((it, i) => {
+      const a = st.ans[keyOf(s, i)], good = a === it.a;
+      if (good) c++;
+      (tp[it.topic] = tp[it.topic] || [0, 0])[1]++; if (good) tp[it.topic][0]++;
+      if (!good) wrong.push({ s, it, i, a });
+      return `<span class="${a === undefined ? 's' : good ? 'y' : 'n'}">${i + 1}</span>`;
+    }).join('');
+    ok += c; n += its.length; per.push(`${s.id} ${c}/${its.length}`);
+    return `<div class="rw"><div class="h"><span>${esc(tx(s.title))}</span><span>${c} / ${its.length}</span></div><div class="b"><i style="width:${c / its.length * 100}%"></i></div><div class="s">${t.time(st.used[s.id] ?? s.minutes, s.minutes)}</div><div class="cells">${cells}</div></div>`;
   }).join('');
-  const p = Math.round(ok / n * 100);
-  $('#r-score').innerHTML = `${ok}<small> / ${n}</small>`;
-  $('#r-msg').textContent = t.msg(p);
-  sendLead({ stage: 'результат', score: `${ok}/${n}`, percent: p, sections: per.join('; '), minutes: Math.round((Date.now() - st.started) / 60000) });
-  show('#s-res');
+  const p = ok / n, score = toScale(p), pct = Math.min(99, Math.max(1, Math.round(cdf((score - 119.9) / 32) * 100)));
+  $('#r-score').textContent = score; $('#r-max').textContent = '/ 245';
+  const pos = v => (v / 245 * 100) + '%';
+  $('#r-scale').innerHTML = `<div class="me" style="left:${pos(score)}"></div>` + [[110, '110'], [150, '150'], [200, '200'], [230, '230 🏅']].map(([v, l]) => `<span class="mk" style="left:${pos(v)}">${l}</span>`).join('');
+  $('#r-badges').innerHTML = `<span class="badge ${score >= 110 ? 'ok' : 'no'}">${score >= 110 ? t.pass : t.fail}</span><span class="badge g">${t.better(pct)}</span><span class="badge g">${t.raw(ok, n)}</span>`;
+  $('#r-msg').textContent = t.msg(score);
+  const list = Object.entries(tp).map(([k, [c, m]]) => ({ k, c, m, r: c / m })).sort((a, b) => a.r - b.r);
+  $('#r-topics').innerHTML = list.map(x => { const col = x.r >= .75 ? 'var(--ok)' : x.r >= .5 ? 'var(--gold2)' : 'var(--bad)'; return `<div class="tp"><span>${esc(TOPIC[x.k] ? TOPIC[x.k][li] : x.k)}</span><b style="color:${col}">${x.c}/${x.m}</b><div class="b"><i style="width:${x.r * 100}%;background:${col}"></i></div></div>`; }).join('');
+  const weak = list.filter(x => x.r < .75).slice(0, 4);
+  $('#r-tips').innerHTML = weak.length ? `<h3 class="h" style="margin-top:16px">${t.weak}</h3>` + weak.map(x => `<div class="tip"><b>${esc(TOPIC[x.k][li])}.</b> ${esc(TOPIC[x.k][li + 2])}</div>`).join('') : '';
+  const optTxt = (it, i) => i === undefined ? t.none : `${L[i]}) ${it.kind === 'cmp' ? t.cmpO[i] : tx(it.o[i])}`;
+  $('#r-review').innerHTML = wrong.length ? wrong.map(w => {
+    const st1 = tx(w.it.q) || tx(w.it.pair) || `${t.colA}: ${tx(w.it.A)} · ${t.colB}: ${tx(w.it.B)}`;
+    return `<details><summary>${esc(tx(w.s.title))} · №${w.i + 1}: ${esc(st1.length > 90 ? st1.slice(0, 90) + '…' : st1)}</summary><p>${t.your}: <b style="color:var(--bad)">${esc(optTxt(w.it, w.a))}</b><br>${t.right}: <b style="color:var(--ok)">${esc(optTxt(w.it, w.it.a))}</b></p>${w.it.ex ? `<p class="muted">${esc(tx(w.it.ex))}</p>` : ''}</details>`;
+  }).join('') : `<p>${t.noMist}</p>`;
+  if (!rerender) {
+    sendLead({ stage: 'результат', ort_score: score, correct: `${ok}/${n}`, sections: per.join('; '), weak_topics: weak.map(x => TOPIC[x.k][1]).join(', '), minutes: Math.round((Date.now() - st.started) / 60000) });
+    show('#s-res');
+  }
 }
-$('#r-again').onclick = () => { st.sec = 0; st.ans = {}; st.started = Date.now(); showIntro(); };
+$('#r-again').onclick = () => { st.sec = 0; st.ans = {}; st.used = {}; st.started = Date.now(); showIntro(); };
 applyUI();
+}
 </script>
 </body>
 </html>

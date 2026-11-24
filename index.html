@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Бекер сынамык ЖРТ — NOVA Up</title>
+<meta name="description" content="Бекер онлайн сынамык ЖРТ (ОРТ): математика, аналогиялар, сүйлөмдөрдү толуктоо. Жыйынтыкты дароо көрөсүз.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bordo:#4A0E22;--bordo2:#6E1A36;--dark:#1E0A12;--gold:#F5C451;--gold2:#B8892A;--cream:#FBF3E4;--pink:#D9A7B4;--ok:#2E7D32;--bad:#C62828}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{font-family:Montserrat,system-ui,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(120% 80% at 80% -10%,rgba(245,196,81,.22),transparent 55%),linear-gradient(160deg,var(--bordo2),var(--bordo) 45%,var(--dark))}
+.wrap{max-width:640px;margin:0 auto;padding:18px 18px 40px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+header img{height:34px}
+.lang{display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
+.lang button{border:0;background:transparent;color:#fff;font:600 13px Montserrat;padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang button.on{background:var(--gold);color:var(--dark)}
+.card{background:var(--cream);color:var(--dark);border-radius:20px;padding:22px 20px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.hero h1{font-size:30px;line-height:1.15;font-weight:800;margin:6px 0 12px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#f3e3e8;font-size:15px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(245,196,81,.35);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+input,select{width:100%;font:500 16px Montserrat;padding:13px 14px;border:1.5px solid #e3cfd6;border-radius:12px;background:#fff;color:var(--dark);outline:none}
+input:focus,select:focus{border-color:var(--bordo2)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.seg.two{grid-template-columns:1fr 1fr}
+.seg button{border:1.5px solid #e3cfd6;background:#fff;border-radius:12px;padding:12px 4px;font:600 15px Montserrat;color:var(--dark);cursor:pointer}
+.seg button.on{background:var(--bordo);border-color:var(--bordo);color:#fff}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#6b4a55;margin-top:14px;line-height:1.4}
+.agree input{width:20px;height:20px;flex:none;margin-top:1px}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:800 17px Montserrat;cursor:pointer;margin-top:18px;background:linear-gradient(180deg,#FFD873,var(--gold));color:var(--dark);box-shadow:0 8px 20px rgba(245,196,81,.35)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:transparent;border:2px solid var(--bordo);color:var(--bordo);box-shadow:none}
+.err{color:var(--bad);font-size:13px;margin-top:6px;min-height:16px}
+.muted{color:#8a6a74;font-size:13px;line-height:1.45}
+.top{position:sticky;top:0;z-index:5;background:rgba(30,10,18,.92);backdrop-filter:blur(8px);margin:-18px -18px 16px;padding:12px 18px}
+.top .t1{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px}
+.timer{background:var(--gold);color:var(--dark);border-radius:999px;padding:4px 11px;font-variant-numeric:tabular-nums}
+.timer.low{background:#ff6b6b;color:#fff}
+.bar{height:5px;background:rgba(255,255,255,.15);border-radius:9px;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+.qn{font-size:13px;font-weight:700;color:var(--bordo2);letter-spacing:.3px}
+.cond{font-size:14px;color:#6b4a55;margin:8px 0 4px;font-style:italic}
+.qtext{font-size:18px;font-weight:600;line-height:1.45;margin:8px 0 14px;white-space:pre-line}
+.pair{font-size:22px;font-weight:800;text-align:center;margin:10px 0 16px;color:var(--bordo)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 16px}
+.cmp div{border:1.5px solid #e3cfd6;border-radius:14px;padding:12px;text-align:center;background:#fff}
+.cmp b{display:block;font-size:12px;color:#8a6a74;margin-bottom:6px;letter-spacing:.4px}
+.cmp span{font-size:20px;font-weight:700}
+.opts{display:grid;gap:9px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;border:1.5px solid #e3cfd6;background:#fff;border-radius:14px;padding:13px 14px;font:500 16px Montserrat;color:var(--dark);cursor:pointer}
+.opt .l{flex:none;width:30px;height:30px;border-radius:50%;background:#f3e6ea;display:grid;place-items:center;font-weight:800;color:var(--bordo)}
+.opt.on{border-color:var(--bordo);background:#fff4f6}
+.opt.on .l{background:var(--bordo);color:#fff}
+.nav{display:flex;gap:10px;margin-top:16px}
+.nav .btn{margin-top:0}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.dots button{width:30px;height:30px;border-radius:8px;border:1.5px solid #e3cfd6;background:#fff;font:700 12px Montserrat;color:#8a6a74;cursor:pointer}
+.dots button.done{background:#f3e6ea;color:var(--bordo);border-color:#e3cfd6}
+.dots button.cur{border-color:var(--bordo);color:var(--bordo)}
+.intro{white-space:pre-line;font-size:15px;line-height:1.55;margin:10px 0 4px}
+.score{font-size:56px;font-weight:800;color:var(--bordo);line-height:1}
+.score small{font-size:22px;color:#8a6a74}
+.secres{display:grid;gap:10px;margin:18px 0}
+.secres>div{background:#fff;border-radius:14px;padding:12px 14px}
+.secres .h span:last-child{white-space:nowrap;margin-left:10px}
+.secres .h{display:flex;justify-content:space-between;font-weight:700;font-size:14px}
+.secres .b{height:8px;background:#f3e6ea;border-radius:9px;margin-top:8px;overflow:hidden}
+.secres .b i{display:block;height:100%;background:var(--bordo)}
+.review{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.review span{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff}
+.review .y{background:var(--ok)}.review .n{background:var(--bad)}.review .s{background:#bba}
+.cta{background:var(--bordo);color:#fff;border-radius:16px;padding:18px;margin-top:16px}
+.cta h3{font-size:18px;margin-bottom:6px}
+.cta p{color:#f3e3e8;font-size:14px;line-height:1.5}
+.hide{display:none!important}
+footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+  <header>
+    <img src="img/logo.png" alt="NOVA Up">
+    <div class="lang"><button data-l="ky" class="on">KG</button><button data-l="ru">RU</button></div>
+  </header>
+
+  <!-- 1. Анкета -->
+  <section id="s-form">
+    <div class="hero">
+      <h1 data-t="h1"></h1>
+      <p data-t="lead"></p>
+      <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span></div>
+    </div>
+    <div class="card">
+      <b style="font-size:18px" data-t="formTitle"></b>
+      <p class="muted" style="margin-top:4px" data-t="formSub"></p>
+      <label data-t="fName"></label>
+      <input id="f-name" autocomplete="name">
+      <label data-t="fPhone"></label>
+      <input id="f-phone" type="tel" inputmode="tel" placeholder="0700 123 456" autocomplete="tel">
+      <label data-t="fClass"></label>
+      <div class="seg" id="f-class"><button>9</button><button>10</button><button>11</button><button data-t="grad" data-v="grad"></button></div>
+      <div class="row">
+        <div><label data-t="fRegion"></label><select id="f-region"></select></div>
+        <div><label data-t="fCity"></label><input id="f-city"></div>
+      </div>
+      <label data-t="fLang"></label>
+      <div class="seg two" id="f-tlang"><button data-v="ky">Кыргызча</button><button data-v="ru">Русский</button></div>
+      <div class="agree"><input type="checkbox" id="f-ok"><span data-t="agree"></span></div>
+      <div class="err" id="f-err"></div>
+      <button class="btn" id="f-go" data-t="start"></button>
+    </div>
+  </section>
+
+  <!-- 2. Вступление к разделу -->
+  <section id="s-intro" class="hide">
+    <div class="card">
+      <div class="qn" id="i-step"></div>
+      <h2 style="margin:6px 0 4px;font-size:22px" id="i-title"></h2>
+      <div class="muted" id="i-meta"></div>
+      <div class="intro" id="i-text"></div>
+      <p class="muted" style="margin-top:10px" data-t="noBack"></p>
+      <button class="btn" id="i-go" data-t="begin"></button>
+    </div>
+  </section>
+
+  <!-- 3. Вопрос -->
+  <section id="s-q" class="hide">
+    <div class="top">
+      <div class="t1"><span id="q-sec"></span><span class="timer" id="q-timer">00:00</span></div>
+      <div class="bar"><i id="q-bar"></i></div>
+    </div>
+    <div class="card">
+      <div class="qn" id="q-num"></div>
+      <div id="q-body"></div>
+      <div class="opts" id="q-opts"></div>
+      <div class="nav">
+        <button class="btn ghost" id="q-prev" data-t="prev"></button>
+        <button class="btn" id="q-next" data-t="next"></button>
+      </div>
+      <p class="err" id="q-warn"></p>
+      <div class="dots" id="q-dots"></div>
+    </div>
+  </section>
+
+  <!-- 4. Результат -->
+  <section id="s-res" class="hide">
+    <div class="card">
+      <div class="qn" data-t="resTitle"></div>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px"><div class="score" id="r-score"></div></div>
+      <p style="margin-top:10px;font-weight:600;line-height:1.45" id="r-msg"></p>
+      <div class="secres" id="r-secs"></div>
+      <p class="muted" data-t="legend"></p>
+      <div class="cta">
+        <h3 data-t="ctaH"></h3>
+        <p data-t="ctaP"></p>
+        <a class="btn" style="text-align:center;text-decoration:none" id="r-ig" href="https://ig.me/m/novaup.kg" target="_blank" data-t="ctaBtn"></a>
+      </div>
+      <button class="btn ghost" id="r-again" data-t="again"></button>
+    </div>
+  </section>
+
+  <footer data-t="foot"></footer>
+</div>
+
+<script src="questions.js"></script>
+<script>
+// ===== Настройка: куда отправлять заявки (пусто = только сохраняется в браузере, для проверки) =====
+const LEAD_URL = '';
+
+const T = {
+  ky: {
+    h1: 'Бекер <span>сынамык ЖРТ</span> — 45 мүнөттө', lead: 'Математика, аналогиялар жана сүйлөмдөрдү толуктоо. Чыныгы ЖРТдей: ар бир бөлүмгө өз убактысы. Жыйынтыкты дароо көрөсүз.',
+    c1: '30 суроо', c2: '45 мүнөт', c3: 'Бекер',
+    formTitle: 'Тестти баштоо үчүн анкетаны толтуруңуз', formSub: 'Жыйынтыкты жана каталардын талдоосун менеджер WhatsApp аркылуу жөнөтөт.',
+    fName: 'Атыңыз', fPhone: 'Телефон номериңиз (WhatsApp)', fClass: 'Канчанчы класстасыз?', grad: 'Бүтүрдүм', fRegion: 'Облус', fCity: 'Шаар / айыл', fLang: 'Тест тили',
+    agree: 'Маалыматтарымды NOVA Up менеджери мени менен байланышуу үчүн колдонушуна макулмун.', start: 'Тестти баштоо →',
+    errName: 'Атыңызды жазыңыз', errPhone: 'Туура номер жазыңыз (мисалы, 0700 123 456)', errClass: 'Классты тандаңыз', errRegion: 'Облусту тандаңыз', errCity: 'Шаарды же айылды жазыңыз', errLang: 'Тест тилин тандаңыз', errOk: 'Макулдукту белгилеңиз',
+    step: (i, n) => `${n} бөлүмдүн ${i}-бөлүмү`, meta: (q, m) => `${q} суроо · ${m} мүнөт`, noBack: 'Убакыт бүткөндө кийинки бөлүм өзү ачылат. Чыныгы ЖРТдей эле мурунку бөлүмгө кайтууга болбойт.', begin: 'Баштадык',
+    qnum: (i, n) => `${n} суроонун ${i}-суроосу`, prev: '← Артка', next: 'Кийинки →', finishSec: 'Бөлүмдү бүтүрүү', confirmSec: 'Бөлүмдү бүтүрөсүзбү? Кайра кайтууга болбойт. Ырастоо үчүн дагы бир жолу басыңыз.', confirmBtn: 'Ооба, бүтүрөм', colA: 'А МАМЫЧАСЫ', colB: 'Б МАМЫЧАСЫ',
+    resTitle: 'СИЗДИН ЖЫЙЫНТЫК', legend: 'Жашыл — туура, кызыл — ката, боз — жооп берилген эмес.',
+    msg: p => p >= 80 ? 'Мыкты! Сиз ЖРТга жакшы даярсыз. Жогорку баллды бекемдөө үчүн татаал темаларды кайталап туруңуз.' : p >= 50 ? 'Жакшы негиз бар! Бир нече тема боюнча бош жерлер бар — аларды жапсаңыз, балл бир топ жогорулайт.' : 'Азыр эң туура убак даярданууну баштоого. Негизги темалардан баштасаңыз, жыйынтык тез жакшырат.',
+    ctaH: 'Каталарды бирге талдайлы', ctaP: 'Менеджер Сизге WhatsApp аркылуу жазып, кайсы темалар кыйын экенин айтып, NOVA Up платформасында кантип даярданууну түшүндүрөт.', ctaBtn: 'Директке жазуу', again: 'Тестти кайра тапшыруу',
+    foot: 'NOVA Up — ЖРТга онлайн даярдык. Суроолор ЦООМОнун расмий брошюрасынын үлгүсүндө түзүлгөн.',
+    regions: ['Бишкек', 'Ош шаары', 'Чүй облусу', 'Ош облусу', 'Жалал-Абад облусу', 'Баткен облусу', 'Ысык-Көл облусу', 'Нарын облусу', 'Талас облусу'], pick: 'Тандаңыз'
+  },
+  ru: {
+    h1: 'Бесплатный <span>пробный ОРТ</span> — за 45 минут', lead: 'Математика, аналогии и дополнение предложений. Как на настоящем ОРТ: у каждого раздела своё время. Результат — сразу.',
+    c1: '30 вопросов', c2: '45 минут', c3: 'Бесплатно',
+    formTitle: 'Заполните анкету, чтобы начать тест', formSub: 'Результат и разбор ошибок менеджер пришлёт в WhatsApp.',
+    fName: 'Ваше имя', fPhone: 'Номер телефона (WhatsApp)', fClass: 'В каком вы классе?', grad: 'Выпускник', fRegion: 'Область', fCity: 'Город / село', fLang: 'Язык теста',
+    agree: 'Согласен(на), что менеджер NOVA Up свяжется со мной по указанным данным.', start: 'Начать тест →',
+    errName: 'Напишите имя', errPhone: 'Укажите верный номер (например, 0700 123 456)', errClass: 'Выберите класс', errRegion: 'Выберите область', errCity: 'Укажите город или село', errLang: 'Выберите язык теста', errOk: 'Отметьте согласие',
+    step: (i, n) => `Раздел ${i} из ${n}`, meta: (q, m) => `${q} вопросов · ${m} минут`, noBack: 'Когда время выйдет, откроется следующий раздел. Как на настоящем ОРТ, вернуться к прошлому разделу нельзя.', begin: 'Начать',
+    qnum: (i, n) => `Вопрос ${i} из ${n}`, prev: '← Назад', next: 'Далее →', finishSec: 'Завершить раздел', confirmSec: 'Завершить раздел? Вернуться к нему будет нельзя. Нажмите ещё раз, чтобы подтвердить.', confirmBtn: 'Да, завершить', colA: 'КОЛОНКА А', colB: 'КОЛОНКА Б',
+    resTitle: 'ВАШ РЕЗУЛЬТАТ', legend: 'Зелёный — верно, красный — ошибка, серый — без ответа.',
+    msg: p => p >= 80 ? 'Отлично! Вы хорошо готовы к ОРТ. Чтобы закрепить высокий балл, повторяйте сложные темы.' : p >= 50 ? 'Хорошая база! Есть пробелы в нескольких темах — закроете их, и балл заметно вырастет.' : 'Сейчас лучшее время начать подготовку. Начните с базовых тем — результат быстро вырастет.',
+    ctaH: 'Разберём ошибки вместе', ctaP: 'Менеджер напишет Вам в WhatsApp, покажет, какие темы даются труднее, и расскажет, как готовиться на платформе NOVA Up.', ctaBtn: 'Написать в директ', again: 'Пройти ещё раз',
+    foot: 'NOVA Up — онлайн-подготовка к ОРТ. Вопросы составлены по образцу официальной брошюры ЦООМО.',
+    regions: ['Бишкек', 'г. Ош', 'Чуйская область', 'Ошская область', 'Джалал-Абадская область', 'Баткенская область', 'Иссык-Кульская область', 'Нарынская область', 'Таласская область'], pick: 'Выберите'
+  }
+};
+const L = ['А', 'Б', 'В', 'Г', 'Д'];
+let ui = 'ky';
+const st = { lead: {}, tl: null, sec: 0, q: 0, ans: {}, left: 0, timer: null, started: null };
+const $ = s => document.querySelector(s);
+const tx = v => typeof v === 'string' ? (v.includes('|') ? v.split('|')[st.tl === 'ru' ? 1 : 0] : v) : v[st.tl];
+
+function applyUI() {
+  document.documentElement.lang = ui;
+  document.querySelectorAll('[data-t]').forEach(el => { const v = T[ui][el.dataset.t]; if (typeof v === 'string') el.innerHTML = v; });
+  const r = $('#f-region'), cur = r.selectedIndex;
+  r.innerHTML = `<option value="">${T[ui].pick}</option>` + T[ui].regions.map((x, i) => `<option value="${T.ky.regions[i]}">${x}</option>`).join('');
+  r.selectedIndex = Math.max(cur, 0);
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === ui));
+  if (!$('#s-intro').classList.contains('hide')) showIntro();
+  if (!$('#s-q').classList.contains('hide')) renderQ();
+}
+document.querySelectorAll('.lang button').forEach(b => b.onclick = () => { ui = b.dataset.l; applyUI(); });
+function seg(id) { document.querySelectorAll(id + ' button').forEach(b => b.onclick = () => { document.querySelectorAll(id + ' button').forEach(x => x.classList.remove('on')); b.classList.add('on'); if (id === '#f-tlang') { ui = b.dataset.v; applyUI(); } }); }
+seg('#f-class'); seg('#f-tlang');
+const segVal = id => { const b = $(id + ' button.on'); return b ? (b.dataset.v || b.textContent) : ''; };
+
+function show(id) { ['#s-form', '#s-intro', '#s-q', '#s-res'].forEach(s => $(s).classList.toggle('hide', s !== id)); scrollTo(0, 0); }
+
+async function sendLead(extra) {
+  const data = { ...st.lead, ...extra, page: location.href, ts: new Date().toISOString() };
+  try { const all = JSON.parse(localStorage.getItem('ort_leads') || '[]'); all.push(data); localStorage.setItem('ort_leads', JSON.stringify(all)); } catch (e) {}
+  if (!LEAD_URL) { console.log('lead', data); return; }
+  try { await fetch(LEAD_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }); } catch (e) { console.warn(e); }
+}
+
+$('#f-go').onclick = () => {
+  const t = T[ui], name = $('#f-name').value.trim(), phone = $('#f-phone').value.replace(/[^\d+]/g, ''), digits = phone.replace(/\D/g, '');
+  const cls = segVal('#f-class'), reg = $('#f-region').value, city = $('#f-city').value.trim(), tl = segVal('#f-tlang');
+  const err = !name ? t.errName : (digits.length < 9 || digits.length > 12) ? t.errPhone : !cls ? t.errClass : !reg ? t.errRegion : !city ? t.errCity : !tl ? t.errLang : !$('#f-ok').checked ? t.errOk : '';
+  $('#f-err').textContent = err; if (err) return;
+  st.lead = { name, phone: $('#f-phone').value.trim(), class: cls, region: reg, city, test_lang: tl };
+  st.tl = tl; st.sec = 0; st.ans = {}; st.started = Date.now();
+  sendLead({ stage: 'анкета' });
+  showIntro();
+};
+
+function showIntro() {
+  const s = ORT.sections[st.sec], t = T[ui];
+  $('#i-step').textContent = t.step(st.sec + 1, ORT.sections.length);
+  $('#i-title').textContent = tx(s.title);
+  $('#i-meta').textContent = t.meta(s.items.length, s.minutes);
+  $('#i-text').textContent = tx(s.intro);
+  show('#s-intro');
+}
+$('#i-go').onclick = () => { st.q = 0; st.left = ORT.sections[st.sec].minutes * 60; startTimer(); renderQ(); show('#s-q'); };
+
+function startTimer() {
+  clearInterval(st.timer);
+  const tick = () => {
+    const m = Math.floor(st.left / 60), s = st.left % 60;
+    $('#q-timer').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    $('#q-timer').classList.toggle('low', st.left <= 60);
+    if (st.left <= 0) { clearInterval(st.timer); nextSection(); return; }
+    st.left--;
+  };
+  tick(); st.timer = setInterval(tick, 1000);
+}
+
+function renderQ() {
+  st.armed = false; if ($('#q-warn')) $('#q-warn').textContent = '';
+  const s = ORT.sections[st.sec], it = s.items[st.q], t = T[ui], key = s.id + ':' + st.q;
+  $('#q-sec').textContent = tx(s.title);
+  $('#q-num').textContent = t.qnum(st.q + 1, s.items.length);
+  let h = '';
+  if (it.cond) h += `<div class="cond">${tx(it.cond)}</div>`;
+  if (s.compare) h += `<div class="cmp"><div><b>${t.colA}</b><span>${tx(it.A)}</span></div><div><b>${t.colB}</b><span>${tx(it.B)}</span></div></div>`;
+  if (it.pair) h += `<div class="pair">${tx(it.pair)}</div>`;
+  if (it.q) h += `<div class="qtext">${tx(it.q)}</div>`;
+  $('#q-body').innerHTML = h;
+  const opts = s.compare ? ['', '', '', ''] : it.o;
+  $('#q-opts').innerHTML = opts.map((o, i) => `<button class="opt ${st.ans[key] === i ? 'on' : ''}" data-i="${i}"><span class="l">${L[i]}</span><span>${s.compare ? '' : tx(o)}</span></button>`).join('');
+  if (s.compare) $('#q-opts').querySelectorAll('.opt span:last-child').forEach((e, i) => e.textContent = st.tl === 'ru' ? ['больше А', 'больше Б', 'равны', 'нельзя определить'][i] : ['А чоң', 'Б чоң', 'барабар', 'аныктоого болбойт'][i]);
+  $('#q-opts').querySelectorAll('.opt').forEach(b => b.onclick = () => { st.ans[key] = +b.dataset.i; renderQ(); setTimeout(() => { if (st.q < s.items.length - 1) { st.q++; renderQ(); } }, 220); });
+  $('#q-prev').style.visibility = st.q ? 'visible' : 'hidden';
+  $('#q-next').textContent = st.q === s.items.length - 1 ? t.finishSec : t.next;
+  $('#q-dots').innerHTML = s.items.map((_, i) => `<button class="${st.ans[s.id + ':' + i] !== undefined ? 'done' : ''} ${i === st.q ? 'cur' : ''}">${i + 1}</button>`).join('');
+  $('#q-dots').querySelectorAll('button').forEach((b, i) => b.onclick = () => { st.q = i; renderQ(); });
+  const total = ORT.sections.reduce((a, x) => a + x.items.length, 0), before = ORT.sections.slice(0, st.sec).reduce((a, x) => a + x.items.length, 0);
+  $('#q-bar').style.width = ((before + Object.keys(st.ans).filter(k => k.startsWith(s.id)).length) / total * 100) + '%';
+}
+$('#q-prev').onclick = () => { if (st.q) { st.q--; renderQ(); } };
+$('#q-next').onclick = () => {
+  const s = ORT.sections[st.sec];
+  if (st.q < s.items.length - 1) { st.q++; renderQ(); return; }
+  if (st.armed) { st.armed = false; nextSection(); return; }
+  st.armed = true; $('#q-next').textContent = T[ui].confirmBtn; $('#q-warn').textContent = T[ui].confirmSec;
+};
+function nextSection() {
+  clearInterval(st.timer);
+  if (st.sec < ORT.sections.length - 1) { st.sec++; showIntro(); } else results();
+}
+
+function results() {
+  const t = T[ui]; let ok = 0, n = 0; const per = [];
+  $('#r-secs').innerHTML = ORT.sections.map(s => {
+    let c = 0; const cells = s.items.map((it, i) => { const a = st.ans[s.id + ':' + i]; if (a === it.a) c++; return `<span class="${a === undefined ? 's' : a === it.a ? 'y' : 'n'}">${i + 1}</span>`; }).join('');
+    ok += c; n += s.items.length; per.push(`${s.id}: ${c}/${s.items.length}`);
+    return `<div><div class="h"><span>${tx(s.title)}</span><span>${c} / ${s.items.length}</span></div><div class="b"><i style="width:${c / s.items.length * 100}%"></i></div><div class="review">${cells}</div></div>`;
+  }).join('');
+  const p = Math.round(ok / n * 100);
+  $('#r-score').innerHTML = `${ok}<small> / ${n}</small>`;
+  $('#r-msg').textContent = t.msg(p);
+  sendLead({ stage: 'результат', score: `${ok}/${n}`, percent: p, sections: per.join('; '), minutes: Math.round((Date.now() - st.started) / 60000) });
+  show('#s-res');
+}
+$('#r-again').onclick = () => { st.sec = 0; st.ans = {}; st.started = Date.now(); showIntro(); };
+applyUI();
+</script>
+</body>
+</html>

@@ -104,6 +104,47 @@ details p{font-size:14px;line-height:1.5;margin-top:8px}
 .cta{background:var(--bordo);color:#fff;border-radius:16px;padding:18px;margin-top:16px}
 .cta h3{font-size:18px;margin-bottom:6px}
 .cta p{color:#f3e3e8;font-size:14px;line-height:1.5}
+/* выбор режима */
+.seg.modes{grid-template-columns:1fr 1fr}
+.seg.modes button{padding:11px 8px;line-height:1.3;font-size:14px}
+.seg.modes button small{display:block;font-weight:500;font-size:12px;opacity:.8;margin-top:3px}
+/* буклет в режиме «лист ответов» */
+.opt.ro{cursor:default}
+.opt.ro .l{background:transparent;border:1.5px solid var(--line);color:var(--bordo)}
+.booknote{font-size:12px;color:var(--mut);margin-top:10px;line-height:1.4}
+/* лист ответов */
+body.sheetmode .wrap{padding-bottom:120px}
+.sheetbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;color:var(--dark);border-top:3px solid var(--gold);box-shadow:0 -10px 30px rgba(0,0,0,.35);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+.sheetbar .in{max-width:680px;margin:0 auto}
+.sb1{display:flex;align-items:center;gap:10px}
+.sb1 .cap{font-size:10px;font-weight:700;color:var(--mut);letter-spacing:.4px;line-height:1.2}
+.sbn{flex:none;font-weight:800;font-size:18px;color:var(--bordo);min-width:40px}
+.bub{display:flex;gap:7px;flex:1}
+.bub button{width:38px;height:38px;border-radius:50%;border:2px solid #8a6a74;background:#fff;font:700 13px Montserrat;color:#8a6a74;cursor:pointer;display:grid;place-items:center;padding:0}
+.bub button.f{background:#1b1b2f;border-color:#1b1b2f;color:#1b1b2f}
+.bub button.sq{border-radius:5px;outline:3px solid #1b1b2f;outline-offset:-1px;border-color:#1b1b2f;color:#1b1b2f;font-weight:800}
+.bub button.f.dead{background:#1b1b2f;opacity:.55}
+.sb-all{flex:none;border:1.5px solid var(--bordo);background:#fff;color:var(--bordo);font:700 13px Montserrat;border-radius:10px;padding:9px 10px;cursor:pointer}
+.sbmsg{font-size:12px;color:var(--bad);min-height:0;margin-top:4px;line-height:1.35}
+.sheetov{position:fixed;inset:0;z-index:30;background:rgba(10,4,8,.7);display:flex;justify-content:center;align-items:flex-end}
+.sheetbox{background:#fff;color:var(--dark);width:100%;max-width:680px;max-height:88vh;overflow:auto;border-radius:18px 18px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom))}
+.sh-h{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:-14px;background:#fff;padding:4px 0 8px;z-index:1}
+.sh-h b{font-size:15px}
+.sh-h button{border:0;background:#f3e6ea;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer}
+.sh-help{font-size:12px;color:#6b4a55;line-height:1.45;background:#fbf3e4;border-radius:10px;padding:8px 10px;margin-bottom:10px}
+.sh-help .ex{display:inline-flex;gap:4px;vertical-align:middle;margin:0 2px}
+.sh-help .ex i{display:inline-block;width:14px;height:14px;border-radius:50%;border:1.5px solid #8a6a74}
+.sh-help .ex i.f{background:#1b1b2f;border-color:#1b1b2f}.sh-help .ex i.sq{border-radius:3px;border:2.5px solid #1b1b2f}
+.sh-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+.sh-sub{grid-column:1/-1;font-size:12px;font-weight:700;color:var(--gold2);margin:8px 0 2px;letter-spacing:.3px}
+.sh-row{display:flex;align-items:center;gap:5px;padding:3px 4px;border-radius:8px}
+.sh-row.cur{background:#fff4d6}
+.sh-row>span{width:24px;flex:none;font-size:12px;font-weight:700;color:var(--mut);text-align:right}
+.sh-row .bub{gap:4px}
+.sh-row .bub button{width:26px;height:26px;font-size:10px;border-width:1.5px}
+@media(max-width:400px){.sh-grid{grid-template-columns:1fr}.bub button{width:34px;height:34px}}
+.resume{background:#fff4d6;border:1.5px solid var(--gold2);border-radius:14px;padding:14px;margin-bottom:14px;color:var(--dark)}
+.resume .nav .btn{padding:12px;font-size:15px}
 .hide{display:none!important}
 footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-height:1.5}
 @media(max-width:380px){.cmp{grid-template-columns:1fr}.big b{font-size:54px}}
@@ -123,6 +164,11 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
       <p data-t="lead"></p>
       <div class="chips"><span class="chip" data-t="c1"></span><span class="chip" data-t="c2"></span><span class="chip" data-t="c3"></span><span class="chip" data-t="c4"></span></div>
     </div>
+    <div class="resume hide" id="resume">
+      <b data-t="resH"></b>
+      <p class="muted" style="margin-top:4px" id="resume-info"></p>
+      <div class="nav" style="margin-top:10px"><button class="btn" id="resume-go" data-t="resGo"></button><button class="btn ghost" id="resume-no" data-t="resNo"></button></div>
+    </div>
     <div class="card">
       <b style="font-size:18px" data-t="formTitle"></b>
       <p class="muted" style="margin-top:4px" data-t="formSub"></p>
@@ -138,6 +184,10 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
       </div>
       <label data-t="fLang"></label>
       <div class="seg two" id="f-tlang"><button data-v="ky">Кыргызча</button><button data-v="ru">Русский</button></div>
+      <label data-t="fMode"></label>
+      <div class="seg modes" id="f-mode"><button data-v="full" class="on" data-t="mFull"></button><button data-v="short" data-t="mShort"></button></div>
+      <label data-t="fFill"></label>
+      <div class="seg modes" id="f-fill"><button data-v="sheet" class="on" data-t="fSheet"></button><button data-v="tap" data-t="fTap"></button></div>
       <div class="agree"><input type="checkbox" id="f-ok"><span data-t="agree"></span></div>
       <div class="err" id="f-err"></div>
       <button class="btn" id="f-go" data-t="start"></button>
@@ -150,6 +200,7 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
       <h2 style="margin:6px 0 4px;font-size:22px;line-height:1.25" id="i-title"></h2>
       <div class="intro" id="i-text"></div>
       <p class="muted" style="margin-top:12px" data-t="noBack"></p>
+      <div class="sh-help" style="margin-top:12px" id="i-sheet"></div>
       <button class="btn" id="i-go" data-t="begin"></button>
     </div>
   </section>
@@ -180,7 +231,7 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
       <div class="scale" id="r-scale"></div>
       <div id="r-badges"></div>
       <p style="margin-top:12px;font-weight:600;line-height:1.5" id="r-msg"></p>
-      <p class="muted" style="margin-top:10px" data-t="approx"></p>
+      <p class="muted" style="margin-top:10px" id="r-approx"></p>
     </div>
     <div class="card"><h3 class="h" data-t="bySec"></h3><div class="rows" id="r-secs"></div><p class="muted" style="margin-top:10px" data-t="legend"></p></div>
     <div class="card"><h3 class="h" data-t="byTopic"></h3><div id="r-topics"></div><div id="r-tips"></div></div>
@@ -198,6 +249,17 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
   <footer data-t="foot"></footer>
 </div>
 
+<div class="sheetbar hide" id="sheetbar"><div class="in">
+  <div class="sb1"><div><div class="cap" data-t="sheetCap"></div><div class="sbn" id="sb-n"></div></div><div class="bub" id="sb-row"></div><button class="sb-all" id="sb-all" data-t="sheetAll"></button></div>
+  <div class="sbmsg" id="sb-msg"></div>
+</div></div>
+<div class="sheetov hide" id="sheet"><div class="sheetbox">
+  <div class="sh-h"><b id="sh-title"></b><button id="sh-x">✕</button></div>
+  <div class="sh-help" id="sh-help"></div>
+  <div class="sbmsg" id="sh-msg" style="margin-bottom:6px"></div>
+  <div class="sh-grid" id="sh-grid"></div>
+</div></div>
+
 <script src="questions.js"></script>
 <script>
 {
@@ -206,8 +268,14 @@ const LEAD_URL = '';
 
 const T = {
   ky: {
-    h1: 'Бекер <span>сынамык ЖРТ</span> чыныгы форматта', lead: 'ЦООМОнун түзүлүшү боюнча 4 бөлүм: математика, аналогиялар жана сүйлөмдөрдү толуктоо, окуу жана түшүнүү, практикалык грамматика. Ар бир бөлүмгө өз убактысы. Аягында — болжолдуу ЖРТ балы жана темалар боюнча толук анализ.',
-    c1: '75 суроо', c2: '1 саат 48 мүнөт', c3: '245 баллдык шкала', c4: 'Бекер',
+    h1: 'Бекер <span>сынамык ЖРТ</span> чыныгы форматта', lead: 'ЦООМОнун түзүлүшү боюнча 4 бөлүм: математика, аналогиялар жана сүйлөмдөрдү толуктоо, окуу жана түшүнүү, практикалык грамматика. Ар бир бөлүмгө өз убактысы, жооптор — чыныгы ЖРТдагыдай жооп барагына. Аягында — болжолдуу ЖРТ балы жана темалар боюнча толук анализ.',
+    c1: '150 суроо', c2: '3 саат 35 мүнөт', c3: '245 баллдык шкала', c4: 'Бекер',
+    fMode: 'Тесттин көлөмү', mFull: 'Толук ЖРТ<small>150 суроо · 3 с 35 мүн</small>', mShort: 'Кыска вариант<small>75 суроо · 1 с 48 мүн</small>',
+    fFill: 'Жоопторду кантип белгилейсиз', fSheet: 'Жооп барагында<small>ЖРТдагыдай</small>', fTap: 'Суроонун ичинде<small>жөнөкөй</small>',
+    sheetCap: 'ЖООП БАРАГЫ', sheetAll: 'Бүт барак', sheetTitle: s => `Жооп барагы · ${s}`, part1s: 'I бөлүк · салыштыруу (А–Г)', part2s: 'II бөлүк · маселелер (А–Д)',
+    sheetHelp: 'Тандаган жообуңузга дал келген тегерекчени боёңуз <span class="ex"><i class="f"></i></span>. Ката кетирдим деп ойлосоңуз, туура жооптун ордун чарчы менен белгилеңиз <span class="ex"><i class="sq"></i></span> — башка тамганы басыңыз. Жоопту <b>БИР ГАНА ЖОЛУ</b> оңдогонго болот. Суроонун номери менен жооп барагындагы номердин дал келишин текшерип туруңуз.',
+    noFix: n => `№${n}: жооп бир жолу оңдолду — экинчи жолу оңдоого болбойт.`, bookNote: 'Бул — тест дептери. Жоопту төмөнкү жооп барагына белгилеңиз.',
+    resH: 'Бүтпөй калган тест бар', resInfo: (sec, n, m) => `${sec} · жооп берилди: ${n} / ${m}`, resGo: 'Улантуу', resNo: 'Жаңыдан баштоо',
     formTitle: 'Тестти баштоо үчүн анкетаны толтуруңуз', formSub: 'Жыйынтыкты жана каталардын талдоосун менеджер WhatsApp аркылуу жөнөтөт.',
     fName: 'Атыңыз', fPhone: 'Телефон номериңиз (WhatsApp)', fClass: 'Канчанчы класстасыз?', grad: 'Бүтүрдүм', fRegion: 'Облус', fCity: 'Шаар / айыл', fLang: 'Тест тили',
     agree: 'Маалыматтарымды NOVA Up менеджери мени менен байланышуу үчүн колдонушуна макулмун.', start: 'Тестти баштоо →',
@@ -217,7 +285,8 @@ const T = {
     confirmSec: n => (n ? `Жооп берилбеген суроолор: ${n}. ` : '') + 'Бөлүмдү бүтүрөсүзбү? Кайра кайтууга болбойт. Ырастоо үчүн дагы бир жолу басыңыз.', confirmBtn: 'Ооба, бүтүрөм',
     colA: 'А МАМЫЧАСЫ', colB: 'Б МАМЫЧАСЫ', cmpO: ['А мамычасындагы чоңдук чоң', 'Б мамычасындагы чоңдук чоң', 'Экөө барабар', 'Аныктоого мүмкүн эмес'],
     showText: 'Текстти көрсөтүү', hideText: 'Текстти жашыруу', line: 'сап',
-    resTitle: 'БОЛЖОЛДУУ ЖРТ БАЛЫ', approx: 'Балл болжолдуу: ЦООМО чийки жоопторду баллга которуунун так формуласын жарыялабайт. Биз ЦООМОнун расмий статистикасына (орточо балл 119,9, максимум 245) таянып эсептедик. Бул тест чыныгы ЖРТнын жарымы көлөмүндө.',
+    resTitle: 'БОЛЖОЛДУУ ЖРТ БАЛЫ', approx: 'Балл болжолдуу: ЦООМО чийки жоопторду баллга которуунун так формуласын жарыялабайт. Биз ЦООМОнун расмий статистикасына (орточо балл 119,9, максимум 245) таянып эсептедик.',
+    half: ' Кыска вариант — чыныгы ЖРТнын жарымы көлөмүндө.',
     pass: 'Босого 110 балл — өттүңүз', fail: 'Босого 110 балл — азырынча жетпейт', better: p => `Катышуучулардын болжол менен ${p}%нан жогору`, raw: (c, n) => `Туура жооптор: ${c} / ${n}`,
     msg: s => s >= 200 ? 'Мыкты жыйынтык! Сиз грантка жана алтын сертификатка умтулсаңыз болот. Эми татаал тапшырмалардагы ылдамдыкты бекемдеңиз.' : s >= 150 ? 'Жакшы жыйынтык! Грантка мүмкүнчүлүк бар. Төмөндөгү алсыз темаларды жапсаңыз, балл дагы 20–40ка өсөт.' : s >= 110 ? 'Босогодон өттүңүз, бирок грант үчүн дагы иштөө керек. Алсыз темаларды системалуу кайталасаңыз, балл тез өсөт.' : 'Азыр эң туура убак даярданууну баштоого. Негизги темалардан баштасаңыз, бир нече айда босогодон ишенимдүү өтөсүз.',
     bySec: 'Бөлүмдөр боюнча', byTopic: 'Темалар боюнча', mistakes: 'Каталар жана туура жооптор', legend: 'Жашыл — туура, кызыл — ката, боз — жооп жок.',
@@ -227,8 +296,14 @@ const T = {
     regions: ['Бишкек', 'Ош шаары', 'Чүй облусу', 'Ош облусу', 'Жалал-Абад облусу', 'Баткен облусу', 'Ысык-Көл облусу', 'Нарын облусу', 'Талас облусу'], pick: 'Тандаңыз'
   },
   ru: {
-    h1: 'Бесплатный <span>пробный ОРТ</span> в настоящем формате', lead: '4 раздела по структуре ЦООМО: математика, аналогии и дополнение предложений, чтение и понимание, практическая грамматика. У каждого раздела своё время. В конце — примерный балл ОРТ и подробный разбор по темам.',
-    c1: '75 вопросов', c2: '1 ч 48 мин', c3: 'Шкала до 245', c4: 'Бесплатно',
+    h1: 'Бесплатный <span>пробный ОРТ</span> в настоящем формате', lead: '4 раздела по структуре ЦООМО: математика, аналогии и дополнение предложений, чтение и понимание, практическая грамматика. У каждого раздела своё время, ответы — на лист ответов, как на настоящем ОРТ. В конце — примерный балл ОРТ и подробный разбор по темам.',
+    c1: '150 вопросов', c2: '3 ч 35 мин', c3: 'Шкала до 245', c4: 'Бесплатно',
+    fMode: 'Объём теста', mFull: 'Полный ОРТ<small>150 вопросов · 3 ч 35 мин</small>', mShort: 'Короткий вариант<small>75 вопросов · 1 ч 48 мин</small>',
+    fFill: 'Как отмечать ответы', fSheet: 'На листе ответов<small>как на ОРТ</small>', fTap: 'Прямо в вопросе<small>проще</small>',
+    sheetCap: 'ЛИСТ ОТВЕТОВ', sheetAll: 'Весь лист', sheetTitle: s => `Лист ответов · ${s}`, part1s: 'Часть I · сравнение (А–Г)', part2s: 'Часть II · задачи (А–Д)',
+    sheetHelp: 'Закрасьте кружок, соответствующий выбранному ответу <span class="ex"><i class="f"></i></span>. Если считаете, что ошиблись, отметьте правильный, на Ваш взгляд, ответ квадратиком <span class="ex"><i class="sq"></i></span> — нажмите другую букву. Исправлять ответ можно <b>ТОЛЬКО ОДИН РАЗ</b>. Сверяйте номер вопроса и номер на листе ответов.',
+    noFix: n => `№${n}: ответ уже исправлен — второй раз исправить нельзя.`, bookNote: 'Это тетрадь теста. Ответ отмечайте на листе ответов внизу.',
+    resH: 'Есть незаконченный тест', resInfo: (sec, n, m) => `${sec} · отвечено: ${n} из ${m}`, resGo: 'Продолжить', resNo: 'Начать заново',
     formTitle: 'Заполните анкету, чтобы начать тест', formSub: 'Результат и разбор ошибок менеджер пришлёт в WhatsApp.',
     fName: 'Ваше имя', fPhone: 'Номер телефона (WhatsApp)', fClass: 'В каком вы классе?', grad: 'Выпускник', fRegion: 'Область', fCity: 'Город / село', fLang: 'Язык теста',
     agree: 'Согласен(на), что менеджер NOVA Up свяжется со мной по указанным данным.', start: 'Начать тест →',
@@ -238,7 +313,8 @@ const T = {
     confirmSec: n => (n ? `Без ответа: ${n}. ` : '') + 'Завершить раздел? Вернуться к нему будет нельзя. Нажмите ещё раз, чтобы подтвердить.', confirmBtn: 'Да, завершить',
     colA: 'КОЛОНКА А', colB: 'КОЛОНКА Б', cmpO: ['Больше величина в колонке А', 'Больше величина в колонке Б', 'Величины равны', 'Определить невозможно'],
     showText: 'Показать текст', hideText: 'Скрыть текст', line: 'строка',
-    resTitle: 'ПРИМЕРНЫЙ БАЛЛ ОРТ', approx: 'Балл примерный: ЦООМО не публикует точную формулу перевода ответов в баллы. Мы рассчитали его по официальной статистике ЦООМО (средний балл 119,9, максимум 245). Этот тест — половина объёма настоящего ОРТ.',
+    resTitle: 'ПРИМЕРНЫЙ БАЛЛ ОРТ', approx: 'Балл примерный: ЦООМО не публикует точную формулу перевода ответов в баллы. Мы рассчитали его по официальной статистике ЦООМО (средний балл 119,9, максимум 245).',
+    half: ' Короткий вариант — половина объёма настоящего ОРТ.',
     pass: 'Порог 110 баллов — пройден', fail: 'Порог 110 баллов — пока не пройден', better: p => `Лучше, чем примерно ${p}% участников`, raw: (c, n) => `Верных ответов: ${c} из ${n}`,
     msg: s => s >= 200 ? 'Отличный результат! Можно целиться в грант и золотой сертификат. Теперь отработайте скорость на сложных заданиях.' : s >= 150 ? 'Хороший результат! Шансы на грант есть. Закройте слабые темы ниже — и балл вырастет ещё на 20–40.' : s >= 110 ? 'Порог пройден, но для гранта нужно поработать. Системно повторите слабые темы — балл быстро вырастет.' : 'Сейчас лучшее время начать подготовку. Начните с базовых тем — за несколько месяцев уверенно пройдёте порог.',
     bySec: 'По разделам', byTopic: 'По темам', mistakes: 'Ошибки и верные ответы', legend: 'Зелёный — верно, красный — ошибка, серый — без ответа.',
@@ -276,12 +352,19 @@ const toScale = p => { for (let i = 1; i < ANCH.length; i++) if (p <= ANCH[i][0]
 const cdf = z => { const t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2), p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; };
 
 let ui = 'ky';
-const st = { lead: {}, tl: null, sec: 0, q: 0, ans: {}, left: 0, timer: null, started: 0, used: {}, secStart: 0, armed: false, textOpen: true };
+const st = { lead: {}, tl: null, mode: 'full', fill: 'sheet', sec: 0, q: 0, ans: {}, mark: {}, endAt: 0, timer: null, started: 0, used: {}, secStart: 0, armed: false, textOpen: true, phase: '' };
+const RUN = 'ort_run_v2';
+function save() { try { const { timer, armed, ...d } = st; localStorage.setItem(RUN, JSON.stringify(d)); } catch (e) {} }
+function load() { try { return JSON.parse(localStorage.getItem(RUN) || 'null'); } catch (e) { return null; } }
+const clearRun = () => { try { localStorage.removeItem(RUN); } catch (e) {} };
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const tx = v => v == null ? '' : typeof v === 'string' ? v : (v[st.tl] ?? v.ru ?? '');
 const secs = () => ORT.sections;
-const items = s => s.items || (s.byLang[st.tl].items || s.byLang[st.tl]);
+const itemsAll = s => s.items || (s.byLang[st.tl].items || s.byLang[st.tl]);
+const items = s => st.mode === 'full' ? itemsAll(s) : itemsAll(s).filter(x => !x.full);
+const mins = s => s.minutes[st.mode] ?? s.minutes;
+const sheetMode = () => st.fill === 'sheet';
 const texts = s => s.byLang && s.byLang[st.tl].texts;
 const keyOf = (s, i) => s.id + ':' + i;
 
@@ -292,15 +375,23 @@ function applyUI() {
   r.innerHTML = `<option value="">${T[ui].pick}</option>` + T[ui].regions.map((x, i) => `<option value="${T.ky.regions[i]}">${x}</option>`).join('');
   r.selectedIndex = Math.max(cur, 0);
   document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === ui));
+  if (!$('#s-form').classList.contains('hide')) resumeCard();
   if (!$('#s-intro').classList.contains('hide')) showIntro();
   if (!$('#s-q').classList.contains('hide')) renderQ();
   if (!$('#s-res').classList.contains('hide')) results(true);
+  if (!$('#sheet').classList.contains('hide')) openSheet();
 }
 document.querySelectorAll('.lang button').forEach(b => b.onclick = () => { ui = b.dataset.l; applyUI(); });
 function seg(id) { document.querySelectorAll(id + ' button').forEach(b => b.onclick = () => { document.querySelectorAll(id + ' button').forEach(x => x.classList.remove('on')); b.classList.add('on'); if (id === '#f-tlang') { ui = b.dataset.v; applyUI(); } }); }
-seg('#f-class'); seg('#f-tlang');
+seg('#f-class'); seg('#f-tlang'); seg('#f-mode'); seg('#f-fill');
 const segVal = id => { const b = $(id + ' button.on'); return b ? (b.dataset.v || b.textContent) : ''; };
-function show(id) { ['#s-form', '#s-intro', '#s-q', '#s-res'].forEach(s => $(s).classList.toggle('hide', s !== id)); scrollTo(0, 0); }
+function show(id) {
+  ['#s-form', '#s-intro', '#s-q', '#s-res'].forEach(s => $(s).classList.toggle('hide', s !== id));
+  const sb = id === '#s-q' && sheetMode();
+  $('#sheetbar').classList.toggle('hide', !sb); document.body.classList.toggle('sheetmode', sb);
+  if (!sb) $('#sheet').classList.add('hide');
+  scrollTo(0, 0);
+}
 
 async function sendLead(extra) {
   const data = { ...st.lead, ...extra, page: location.href, ts: new Date().toISOString() };
@@ -315,7 +406,9 @@ $('#f-go').onclick = () => {
   const err = !name ? t.errName : (digits.length < 9 || digits.length > 12) ? t.errPhone : !cls ? t.errClass : !reg ? t.errRegion : !city ? t.errCity : !tl ? t.errLang : !$('#f-ok').checked ? t.errOk : '';
   $('#f-err').textContent = err; if (err) return;
   st.lead = { name, phone: $('#f-phone').value.trim(), class: cls, region: reg, city, test_lang: tl };
-  st.tl = tl; st.sec = 0; st.ans = {}; st.used = {}; st.started = Date.now();
+  st.tl = tl; st.mode = segVal('#f-mode') || 'full'; st.fill = segVal('#f-fill') || 'sheet';
+  st.sec = 0; st.ans = {}; st.mark = {}; st.used = {}; st.started = Date.now();
+  st.lead.mode = st.mode === 'full' ? 'полный' : 'короткий'; st.lead.fill = sheetMode() ? 'лист ответов' : 'в вопросе';
   sendLead({ stage: 'анкета' });
   showIntro();
 };
@@ -324,19 +417,21 @@ function showIntro() {
   const s = secs()[st.sec], t = T[ui];
   $('#i-step').textContent = t.step(st.sec + 1, secs().length);
   $('#i-title').textContent = tx(s.title);
-  $('#i-text').textContent = tx(s.intro);
+  $('#i-text').textContent = tx(s.intro[st.mode] || s.intro);
+  $('#i-sheet').innerHTML = t.sheetHelp; $('#i-sheet').classList.toggle('hide', !sheetMode());
+  st.phase = 'intro'; save();
   show('#s-intro');
 }
-$('#i-go').onclick = () => { st.q = 0; st.textOpen = true; st.left = secs()[st.sec].minutes * 60; st.secStart = Date.now(); startTimer(); renderQ(); show('#s-q'); };
+$('#i-go').onclick = () => { st.q = 0; st.textOpen = true; st.secStart = Date.now(); st.endAt = Date.now() + mins(secs()[st.sec]) * 60000; st.phase = 'q'; save(); startTimer(); renderQ(); show('#s-q'); };
 
 function startTimer() {
   clearInterval(st.timer);
   const tick = () => {
-    const m = Math.floor(st.left / 60), s = st.left % 60;
+    const left = Math.max(0, Math.round((st.endAt - Date.now()) / 1000));
+    const m = Math.floor(left / 60), s = left % 60;
     $('#q-timer').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-    $('#q-timer').classList.toggle('low', st.left <= 60);
-    if (st.left <= 0) { clearInterval(st.timer); nextSection(); return; }
-    st.left--;
+    $('#q-timer').classList.toggle('low', left <= 60);
+    if (left <= 0) { clearInterval(st.timer); nextSection(); }
   };
   tick(); st.timer = setInterval(tick, 1000);
 }
@@ -365,12 +460,63 @@ function renderQ() {
   if (it.q) h += `<div class="qtext">${esc(tx(it.q))}</div>`;
   $('#q-body').innerHTML = h;
   const opts = it.kind === 'cmp' ? t.cmpO : it.o.map(tx);
-  $('#q-opts').innerHTML = opts.map((o, i) => `<button class="opt ${st.ans[key] === i ? 'on' : ''}" data-i="${i}"><span class="l">${L[i]}</span><span>${esc(o)}</span></button>`).join('');
-  $('#q-opts').querySelectorAll('.opt').forEach(b => b.onclick = () => { st.ans[key] = +b.dataset.i; $('#q-opts').querySelectorAll('.opt').forEach(x => x.classList.toggle('on', x === b)); dots(); progress(); });
+  if (sheetMode()) {
+    $('#q-opts').innerHTML = opts.map((o, i) => `<div class="opt ro"><span class="l">${L[i]}</span><span>${esc(o)}</span></div>`).join('') + `<p class="booknote">${esc(t.bookNote)}</p>`;
+    sheetBar();
+  } else {
+    $('#q-opts').innerHTML = opts.map((o, i) => `<button class="opt ${st.ans[key] === i ? 'on' : ''}" data-i="${i}"><span class="l">${L[i]}</span><span>${esc(o)}</span></button>`).join('');
+    $('#q-opts').querySelectorAll('.opt').forEach(b => b.onclick = () => { st.ans[key] = +b.dataset.i; save(); $('#q-opts').querySelectorAll('.opt').forEach(x => x.classList.toggle('on', x === b)); dots(); progress(); });
+  }
   $('#q-prev').style.visibility = st.q ? 'visible' : 'hidden';
   $('#q-next').textContent = st.q === its.length - 1 ? t.finishSec : t.next;
   dots(); progress();
 }
+// ===== лист ответов =====
+const nOpts = it => it.kind === 'cmp' ? 4 : it.o.length;
+function bubHTML(s, i) {
+  const m = st.mark[keyOf(s, i)] || {}, it = items(s)[i];
+  return Array.from({ length: nOpts(it) }, (_, j) => `<button data-q="${i}" data-j="${j}" class="${m.f === j ? 'f' : ''} ${m.x === j ? 'sq' : ''}">${L[j]}</button>`).join('');
+}
+function markAns(i, j, msgEl) {
+  const s = secs()[st.sec], key = keyOf(s, i), m = st.mark[key];
+  msgEl.textContent = '';
+  if (!m) st.mark[key] = { f: j };
+  else if (m.x === undefined) { if (j === m.f) return false; m.x = j; }
+  else { if (j !== m.x) msgEl.textContent = T[ui].noFix(i + 1); return false; }
+  const mm = st.mark[key]; st.ans[key] = mm.x ?? mm.f; save(); dots(); progress(); return true;
+}
+function sheetBar() {
+  const s = secs()[st.sec];
+  $('#sb-n').textContent = '№' + (st.q + 1);
+  $('#sb-msg').textContent = '';
+  $('#sb-row').innerHTML = bubHTML(s, st.q);
+  $('#sb-row').querySelectorAll('button').forEach(b => b.onclick = () => {
+    if (markAns(+b.dataset.q, +b.dataset.j, $('#sb-msg'))) { const keep = $('#sb-msg').textContent; sheetBar(); $('#sb-msg').textContent = keep; }
+  });
+}
+function openSheet() {
+  const s = secs()[st.sec], its = items(s), t = T[ui];
+  $('#sh-title').textContent = t.sheetTitle(tx(s.title));
+  $('#sh-help').innerHTML = t.sheetHelp;
+  let h = '', part = 0;
+  its.forEach((it, i) => {
+    if (it.part && it.part !== part) { part = it.part; h += `<div class="sh-sub">${part === 1 ? t.part1s : t.part2s}</div>`; }
+    h += `<div class="sh-row ${i === st.q ? 'cur' : ''}"><span>${i + 1}</span><div class="bub">${bubHTML(s, i)}</div></div>`;
+  });
+  const wasOpen = !$('#sheet').classList.contains('hide'), sc = $('.sheetbox').scrollTop;
+  $('#sh-grid').innerHTML = h;
+  $('#sh-grid').querySelectorAll('.bub button').forEach(b => b.onclick = () => {
+    if (markAns(+b.dataset.q, +b.dataset.j, $('#sh-msg'))) b.parentElement.innerHTML = bubHTML(s, +b.dataset.q), openSheet();
+  });
+  $('#sheet').classList.remove('hide');
+  if (wasOpen) $('.sheetbox').scrollTop = sc;
+  else { $('#sh-msg').textContent = ''; const cur = $('#sh-grid .cur'); if (cur) cur.scrollIntoView({ block: 'center' }); }
+}
+$('#sb-all').onclick = openSheet;
+const closeSheet = () => { $('#sheet').classList.add('hide'); sheetBar(); };
+$('#sh-x').onclick = closeSheet;
+$('#sheet').onclick = e => { if (e.target.id === 'sheet') closeSheet(); };
+
 function dots() {
   const s = secs()[st.sec], its = items(s);
   $('#q-dots').innerHTML = its.map((_, i) => `<button class="${st.ans[keyOf(s, i)] !== undefined ? 'done' : ''} ${i === st.q ? 'cur' : ''}">${i + 1}</button>`).join('');
@@ -383,7 +529,7 @@ function progress() {
 function go(i) {
   const s = secs()[st.sec], its = items(s);
   if (texts(s) && its[i].text !== its[st.q].text) st.textOpen = true;
-  st.q = i; renderQ(); scrollTo(0, 0);
+  st.q = i; save(); renderQ(); scrollTo(0, 0);
 }
 $('#q-prev').onclick = () => { if (st.q) go(st.q - 1); };
 $('#q-next').onclick = () => {
@@ -394,8 +540,9 @@ $('#q-next').onclick = () => {
   st.armed = true; $('#q-next').textContent = T[ui].confirmBtn; $('#q-warn').textContent = T[ui].confirmSec(miss);
 };
 function nextSection() {
-  clearInterval(st.timer);
-  st.used[secs()[st.sec].id] = Math.min(secs()[st.sec].minutes, Math.ceil((Date.now() - st.secStart) / 60000));
+  clearInterval(st.timer); $('#sheet').classList.add('hide');
+  const s = secs()[st.sec];
+  st.used[s.id] = Math.min(mins(s), Math.ceil((Math.min(Date.now(), st.endAt) - st.secStart) / 60000));
   if (st.sec < secs().length - 1) { st.sec++; showIntro(); } else results();
 }
 
@@ -411,7 +558,7 @@ function results(rerender) {
       return `<span class="${a === undefined ? 's' : good ? 'y' : 'n'}">${i + 1}</span>`;
     }).join('');
     ok += c; n += its.length; per.push(`${s.id} ${c}/${its.length}`);
-    return `<div class="rw"><div class="h"><span>${esc(tx(s.title))}</span><span>${c} / ${its.length}</span></div><div class="b"><i style="width:${c / its.length * 100}%"></i></div><div class="s">${t.time(st.used[s.id] ?? s.minutes, s.minutes)}</div><div class="cells">${cells}</div></div>`;
+    return `<div class="rw"><div class="h"><span>${esc(tx(s.title))}</span><span>${c} / ${its.length}</span></div><div class="b"><i style="width:${c / its.length * 100}%"></i></div><div class="s">${t.time(st.used[s.id] ?? mins(s), mins(s))}</div><div class="cells">${cells}</div></div>`;
   }).join('');
   const p = ok / n, score = toScale(p), pct = Math.min(99, Math.max(1, Math.round(cdf((score - 119.9) / 32) * 100)));
   $('#r-score').textContent = score; $('#r-max').textContent = '/ 245';
@@ -419,6 +566,7 @@ function results(rerender) {
   $('#r-scale').innerHTML = `<div class="me" style="left:${pos(score)}"></div>` + [[110, '110'], [150, '150'], [200, '200'], [230, '230 🏅']].map(([v, l]) => `<span class="mk" style="left:${pos(v)}">${l}</span>`).join('');
   $('#r-badges').innerHTML = `<span class="badge ${score >= 110 ? 'ok' : 'no'}">${score >= 110 ? t.pass : t.fail}</span><span class="badge g">${t.better(pct)}</span><span class="badge g">${t.raw(ok, n)}</span>`;
   $('#r-msg').textContent = t.msg(score);
+  $('#r-approx').textContent = t.approx + (st.mode === 'short' ? t.half : '');
   const list = Object.entries(tp).map(([k, [c, m]]) => ({ k, c, m, r: c / m })).sort((a, b) => a.r - b.r);
   $('#r-topics').innerHTML = list.map(x => { const col = x.r >= .75 ? 'var(--ok)' : x.r >= .5 ? 'var(--gold2)' : 'var(--bad)'; return `<div class="tp"><span>${esc(TOPIC[x.k] ? TOPIC[x.k][li] : x.k)}</span><b style="color:${col}">${x.c}/${x.m}</b><div class="b"><i style="width:${x.r * 100}%;background:${col}"></i></div></div>`; }).join('');
   const weak = list.filter(x => x.r < .75).slice(0, 4);
@@ -429,11 +577,35 @@ function results(rerender) {
     return `<details><summary>${esc(tx(w.s.title))} · №${w.i + 1}: ${esc(st1.length > 90 ? st1.slice(0, 90) + '…' : st1)}</summary><p>${t.your}: <b style="color:var(--bad)">${esc(optTxt(w.it, w.a))}</b><br>${t.right}: <b style="color:var(--ok)">${esc(optTxt(w.it, w.it.a))}</b></p>${w.it.ex ? `<p class="muted">${esc(tx(w.it.ex))}</p>` : ''}</details>`;
   }).join('') : `<p>${t.noMist}</p>`;
   if (!rerender) {
+    st.phase = 'done'; clearRun();
     sendLead({ stage: 'результат', ort_score: score, correct: `${ok}/${n}`, sections: per.join('; '), weak_topics: weak.map(x => TOPIC[x.k][1]).join(', '), minutes: Math.round((Date.now() - st.started) / 60000) });
     show('#s-res');
   }
 }
-$('#r-again').onclick = () => { st.sec = 0; st.ans = {}; st.used = {}; st.started = Date.now(); showIntro(); };
+$('#r-again').onclick = () => { st.sec = 0; st.ans = {}; st.mark = {}; st.used = {}; st.started = Date.now(); showIntro(); };
+
+// ===== продолжить незаконченный тест =====
+function resumeCard() {
+  const d = load(), box = $('#resume');
+  const sec = d && d.tl && d.phase && d.phase !== 'done' ? ORT.sections[d.sec] : null;
+  if (!sec) { box.classList.add('hide'); return; }
+  const keep = { tl: st.tl, mode: st.mode }; st.tl = d.tl; st.mode = d.mode;
+  const m = items(sec).length; Object.assign(st, keep);
+  const n = Object.keys(d.ans || {}).filter(k => k.startsWith(sec.id + ':')).length;
+  $('#resume-info').textContent = T[ui].resInfo(tx(sec.title), n, m);
+  box.classList.remove('hide');
+}
+$('#resume-no').onclick = () => { clearRun(); $('#resume').classList.add('hide'); };
+$('#resume-go').onclick = () => {
+  const d = load(); if (!d) return;
+  Object.assign(st, d, { timer: null, armed: false });
+  ui = st.tl; document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === ui));
+  document.querySelectorAll('[data-t]').forEach(el => { const v = T[ui][el.dataset.t]; if (typeof v === 'string') el.innerHTML = v; });
+  if (st.phase === 'q') {
+    if (Date.now() >= st.endAt) { nextSection(); return; }
+    startTimer(); renderQ(); show('#s-q');
+  } else showIntro();
+};
 applyUI();
 }
 </script>

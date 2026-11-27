@@ -26,20 +26,20 @@
 :root{--bordo:#4A0E22;--bordo2:#6E1A36;--dark:#1E0A12;--gold:#F5C451;--gold2:#B8892A;--cream:#FBF3E4;--pink:#D9A7B4;--ok:#2E7D32;--bad:#C62828;--line:#e3cfd6;--mut:#8a6a74}
 *{box-sizing:border-box;margin:0;padding:0;min-width:0}
 body{font-family:Montserrat,system-ui,sans-serif;background:var(--dark);color:#fff;-webkit-font-smoothing:antialiased}
-.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(120% 80% at 80% -10%,rgba(245,196,81,.22),transparent 55%),linear-gradient(160deg,var(--bordo2),var(--bordo) 45%,var(--dark))}
+.bg{position:fixed;inset:0;z-index:-1;background:var(--bordo)}
 .wrap{max-width:680px;margin:0 auto;padding:18px 16px 40px}
 header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
 header img{height:34px}
 .lang{display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
 .lang button{border:0;background:transparent;color:#fff;font:600 13px Montserrat;padding:6px 12px;border-radius:999px;cursor:pointer}
 .lang button.on{background:var(--gold);color:var(--dark)}
-.card{background:var(--cream);color:var(--dark);border-radius:20px;padding:22px 18px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.card{background:var(--cream);color:var(--dark);border-radius:14px;padding:22px 18px}
 .card+.card{margin-top:14px}
 .hero h1{font-size:30px;line-height:1.15;font-weight:800;margin:6px 0 12px}
 .hero h1 span{color:var(--gold)}
 .hero p{color:#f3e3e8;font-size:15px;line-height:1.5}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
-.chip{background:rgba(255,255,255,.1);border:1px solid rgba(245,196,81,.35);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;margin:14px 0 22px;font-size:14px;font-weight:600;color:#f3e3e8;line-height:1.6}
+.chip{white-space:nowrap}.chip:not(:last-child)::after{content:'·';margin:0 8px;color:var(--gold)}
 label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
 input,select{width:100%;font:500 16px Montserrat;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--dark);outline:none}
 input:focus,select:focus{border-color:var(--bordo2)}
@@ -50,7 +50,7 @@ input:focus,select:focus{border-color:var(--bordo2)}
 .seg button.on{background:var(--bordo);border-color:var(--bordo);color:#fff}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#6b4a55;margin-top:14px;line-height:1.4}
 .agree input{width:20px;height:20px;flex:none;margin-top:1px}
-.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:800 17px Montserrat;cursor:pointer;margin-top:18px;background:linear-gradient(180deg,#FFD873,var(--gold));color:var(--dark);box-shadow:0 8px 20px rgba(245,196,81,.35);text-align:center;text-decoration:none}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:800 17px Montserrat;cursor:pointer;margin-top:18px;background:var(--gold);color:var(--dark);text-align:center;text-decoration:none}
 .btn.ghost{background:transparent;border:2px solid var(--bordo);color:var(--bordo);box-shadow:none}
 .err{color:var(--bad);font-size:13px;margin-top:8px;min-height:16px;line-height:1.4}
 .muted{color:var(--mut);font-size:13px;line-height:1.45}

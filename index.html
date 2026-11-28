@@ -276,6 +276,12 @@ footer{text-align:center;color:#d9a7b4;font-size:12px;margin-top:22px;line-heigh
   <div class="sh-grid" id="sh-grid"></div>
 </div></div>
 
+<script>
+// если на каком-то телефоне скрипт сломается — пишем ошибку в журнал Apps Script (в таблицу не попадает)
+window.onerror = function (msg, src, line, col) {
+  try { fetch('https://script.google.com/macros/s/AKfycbwmvsKHBz55-oOkNvyMg7IjyFrIWhC7dmpXoFT6-Vpl9ygsacwTkKRjFyiSSivb-3q2yA/exec', { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ stage: 'ошибка', msg: String(msg), src: String(src), line: line, col: col, ua: navigator.userAgent }) }); } catch (e) {}
+};
+</script>
 <script src="questions.js"></script>
 <script>
 {
@@ -397,6 +403,7 @@ function applyUI() {
   if (!$('#s-res').classList.contains('hide')) results(true);
   if (!$('#sheet').classList.contains('hide')) openSheet();
 }
+try { applyUI(); } catch (e) { setTimeout(() => { throw e; }); }  // подписи сразу, даже если ниже что-то упадёт
 document.querySelectorAll('.lang button').forEach(b => b.onclick = () => { ui = b.dataset.l; applyUI(); });
 function seg(id) { document.querySelectorAll(id + ' button').forEach(b => b.onclick = () => { document.querySelectorAll(id + ' button').forEach(x => x.classList.remove('on')); b.classList.add('on'); if (id === '#f-tlang') { ui = b.dataset.v; applyUI(); } }); }
 seg('#f-class'); seg('#f-tlang'); seg('#f-mode'); seg('#f-fill');

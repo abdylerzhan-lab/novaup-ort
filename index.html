@@ -347,6 +347,7 @@ const T = {
   }
 };
 const TOPIC = {
+  trig: ['Тригонометрия', 'Тригонометрия', 'Негизги тригонометриялык формулаларды жана бурчтардын маанилерин кайталаңыз.', 'Повторите основные тригонометрические формулы и значения углов.'],
   arith: ['Арифметика: бөлчөктөр, даражалар, тамырлар', 'Арифметика: дроби, степени, корни', 'Бөлчөктөр, даражалар жана тамырлар менен амалдарды кайталаңыз; оозеки эсептөөнү машыктырыңыз.', 'Повторите действия с дробями, степенями и корнями; тренируйте устный счёт.'],
   percent: ['Пайыздар, катыштар, пропорциялар', 'Проценты, отношения, пропорции', 'Пайызды табуу, пайызга көбөйтүү/азайтуу жана пропорция түзүү боюнча маселелерди чыгарыңыз.', 'Решайте задачи на нахождение процента, повышение/понижение на процент и пропорции.'],
   algebra: ['Алгебра: туюнтмалар, теңдемелер', 'Алгебра: выражения, уравнения', 'Кыскача көбөйтүү формулаларын, теңдемелерди жана барабарсыздыктарды чыгарууну кайталаңыз.', 'Повторите формулы сокращённого умножения, уравнения и неравенства.'],
@@ -598,7 +599,7 @@ function results(rerender) {
   const list = Object.entries(tp).map(([k, [c, m]]) => ({ k, c, m, r: c / m })).sort((a, b) => a.r - b.r);
   $('#r-topics').innerHTML = list.map(x => { const col = x.r >= .75 ? 'var(--ok)' : x.r >= .5 ? 'var(--gold2)' : 'var(--bad)'; return `<div class="tp"><span>${esc(TOPIC[x.k] ? TOPIC[x.k][li] : x.k)}</span><b style="color:${col}">${x.c}/${x.m}</b><div class="b"><i style="width:${x.r * 100}%;background:${col}"></i></div></div>`; }).join('');
   const weak = list.filter(x => x.r < .75).slice(0, 4);
-  $('#r-tips').innerHTML = weak.length ? `<h3 class="h" style="margin-top:16px">${t.weak}</h3>` + weak.map(x => `<div class="tip"><b>${esc(TOPIC[x.k][li])}.</b> ${esc(TOPIC[x.k][li + 2])}</div>`).join('') : '';
+  $('#r-tips').innerHTML = weak.length ? `<h3 class="h" style="margin-top:16px">${t.weak}</h3>` + weak.map(x => TOPIC[x.k] ? `<div class="tip"><b>${esc(TOPIC[x.k][li])}.</b> ${esc(TOPIC[x.k][li + 2])}</div>` : '').join('') : '';
   const optTxt = (it, i) => i === undefined ? t.none : `${L[i]}) ${it.kind === 'cmp' ? t.cmpO[i] : tx(it.o[i])}`;
   $('#r-review').innerHTML = wrong.length ? wrong.map(w => {
     const st1 = tx(w.it.q) || tx(w.it.pair) || `${t.colA}: ${tx(w.it.A)} · ${t.colB}: ${tx(w.it.B)}`;
@@ -609,7 +610,7 @@ function results(rerender) {
     const errs = secs().map(x => { const nums = wrong.filter(w => w.s === x).map(w => w.a === undefined ? `${w.i + 1}(пусто)` : `${w.i + 1}`); return nums.length ? `${x.id}: ${nums.join(', ')}` : ''; }).filter(Boolean).join(' | ');
     sendLead({ stage: 'результат', progress: 'завершён', ort_score: score, passed: score >= 110 ? 'да' : 'нет', percentile: pct, correct: `${ok}/${n}`, answered: `${Object.keys(st.ans).length}/${n}`,
       sections: per.join('; '), sec_minutes: secs().map(x => `${x.id} ${st.used[x.id] ?? mins(x)}/${mins(x)}`).join('; '),
-      topics: list.map(x => `${TOPIC[x.k] ? TOPIC[x.k][1] : x.k} ${x.c}/${x.m}`).join('; '), weak_topics: weak.map(x => TOPIC[x.k][1]).join(', '), errors: errs,
+      topics: list.map(x => `${TOPIC[x.k] ? TOPIC[x.k][1] : x.k} ${x.c}/${x.m}`).join('; '), weak_topics: weak.map(x => TOPIC[x.k] ? TOPIC[x.k][1] : x.k).join(', '), errors: errs,
       minutes: Math.round((Date.now() - st.started) / 60000) });
     show('#s-res');
   }

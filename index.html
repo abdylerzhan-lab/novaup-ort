@@ -419,7 +419,7 @@ $('#f-go').onclick = () => {
   const cls = segVal('#f-class'), reg = $('#f-region').value, city = $('#f-city').value.trim(), tl = segVal('#f-tlang');
   const err = !name ? t.errName : (digits.length < 9 || digits.length > 12) ? t.errPhone : !cls ? t.errClass : !reg ? t.errRegion : !city ? t.errCity : !tl ? t.errLang : !$('#f-ok').checked ? t.errOk : '';
   $('#f-err').textContent = err; if (err) return;
-  st.lead = { name, phone: $('#f-phone').value.trim(), class: cls, region: reg, city, test_lang: tl };
+  st.lead = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, phone: $('#f-phone').value.trim(), class: cls, region: reg, city, test_lang: tl };
   st.tl = tl; st.mode = segVal('#f-mode') || 'full'; st.fill = segVal('#f-fill') || 'sheet';
   st.sec = 0; st.ans = {}; st.mark = {}; st.used = {}; st.started = Date.now();
   st.lead.mode = st.mode === 'full' ? 'полный' : 'короткий'; st.lead.fill = sheetMode() ? 'лист ответов' : 'в вопросе';
@@ -557,7 +557,12 @@ function nextSection() {
   clearInterval(st.timer); $('#sheet').classList.add('hide');
   const s = secs()[st.sec];
   st.used[s.id] = Math.min(mins(s), Math.ceil((Math.min(Date.now(), st.endAt) - st.secStart) / 60000));
-  if (st.sec < secs().length - 1) { st.sec++; showIntro(); } else results();
+  if (st.sec < secs().length - 1) {
+    // промежуточный итог: если ученик бросит тест, в таблице останутся пройденные разделы
+    const done = secs().slice(0, st.sec + 1).map(x => { const its = items(x); return `${x.id} ${its.filter((it, i) => st.ans[keyOf(x, i)] === it.a).length}/${its.length}`; });
+    sendLead({ stage: 'в процессе', progress: `раздел ${st.sec + 1} из ${secs().length}`, sections: done.join('; '), minutes: Math.round((Date.now() - st.started) / 60000) });
+    st.sec++; showIntro();
+  } else results();
 }
 
 function results(rerender) {
@@ -592,7 +597,11 @@ function results(rerender) {
   }).join('') : `<p>${t.noMist}</p>`;
   if (!rerender) {
     st.phase = 'done'; clearRun();
-    sendLead({ stage: 'результат', ort_score: score, correct: `${ok}/${n}`, sections: per.join('; '), weak_topics: weak.map(x => TOPIC[x.k][1]).join(', '), minutes: Math.round((Date.now() - st.started) / 60000) });
+    const errs = secs().map(x => { const nums = wrong.filter(w => w.s === x).map(w => w.a === undefined ? `${w.i + 1}(пусто)` : `${w.i + 1}`); return nums.length ? `${x.id}: ${nums.join(', ')}` : ''; }).filter(Boolean).join(' | ');
+    sendLead({ stage: 'результат', progress: 'завершён', ort_score: score, passed: score >= 110 ? 'да' : 'нет', percentile: pct, correct: `${ok}/${n}`, answered: `${Object.keys(st.ans).length}/${n}`,
+      sections: per.join('; '), sec_minutes: secs().map(x => `${x.id} ${st.used[x.id] ?? mins(x)}/${mins(x)}`).join('; '),
+      topics: list.map(x => `${TOPIC[x.k] ? TOPIC[x.k][1] : x.k} ${x.c}/${x.m}`).join('; '), weak_topics: weak.map(x => TOPIC[x.k][1]).join(', '), errors: errs,
+      minutes: Math.round((Date.now() - st.started) / 60000) });
     show('#s-res');
   }
 }
